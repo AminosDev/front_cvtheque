@@ -27,8 +27,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { PlanificationComponent } from './planification/planification.component';
 
+import { PlanificationComponent } from './planification/planification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +51,7 @@ import { PlanificationComponent } from './planification/planification.component'
     TooltipsComponent,
     CarouselComponent,
     TabsComponent,
+    
     PlanificationComponent
   ],
   imports: [
