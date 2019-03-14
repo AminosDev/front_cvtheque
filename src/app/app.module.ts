@@ -29,6 +29,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
 
 import { PlanificationComponent } from './planification/planification.component';
+import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +54,9 @@ import { PlanificationComponent } from './planification/planification.component'
     CarouselComponent,
     TabsComponent,
     
-    PlanificationComponent
+    PlanificationComponent,
+  
+    ProgrammerEntretienComponent
   ],
   imports: [
     NgSelectModule,
