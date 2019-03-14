@@ -1,0 +1,353 @@
+<div class="row">
+
+  <div class="col-md-12 grid-margin stretch-card">
+
+    <div class="card">
+
+
+      <ngb-accordion [closeOthers]="true" activeIds="" class="accordion">
+        <ngb-panel id="static-1">
+          <ng-template ngbPanelTitle>
+            <h6 class="mb-0">
+              <h5 class="display-4"><i class="fa fa-filter icon-lg"></i>Filtre</h5>
+            </h6>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="col-md-12 display-5">
+              <div class="row">
+
+                <div class="col-sm-4">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" checked name="icon_solid" />
+                    <div class="state p-primary">
+                      <i class="icon mdi mdi-check"></i>
+                      <label>RT</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="icon_solid" />
+                    <div class="state p-primary">
+                      <i class="icon mdi mdi-check"></i>
+                      <label>MANAGER</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr>
+            <div class="col-md-12">
+
+              <div class="row">
+                <div class="col-sm-12">
+
+                  <label>Competences</label>
+                  <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true"
+                    placeholder="Choisir les competences" [(ngModel)]="selectedCityIds">
+                  </ng-select>
+                  <!--<p>
+                    Selected cities: {{selectedCityIds}}
+                </p>-->
+                </div>
+                
+              </div>
+            </div>
+            <hr>
+            <div class="col-md-12">
+
+              <div class="row">
+
+                <div class="col-sm-4">
+                  <div class="pretty p-switch p-fill">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>JAVA</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-5">
+                  <div class="pretty p-switch p-fill">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>.NET</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="pretty p-switch p-fill">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>PHP</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-5">
+                  <div class="pretty p-switch p-fill">
+                    <input type="checkbox" />
+                    <div class="state p-primary">
+                      <label>ANGULAR</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <hr>
+
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+
+      <div class="card-body">
+        <ngb-tabset class="tab-solid tab-solid-primary">
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Pas encor planifier
+            </ng-template>
+            <ng-template ngbTabContent>
+
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        User
+                      </th>
+                      <th>
+                        First name
+                      </th>
+                      <th>
+                        Progress
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Deadline
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                      </td>
+                      <td>
+                        Herman Beck
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $ 77.99
+                      </td>
+                      <td>
+                        May 15, 2015
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
+                      </td>
+                      <td>
+                        Messsy Adam
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $245.30
+                      </td>
+                      <td>
+                        July 1, 2015
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
+                      </td>
+                      <td>
+                        John Richards
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $138.00
+                      </td>
+                      <td>
+                        Apr 12, 2015
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
+                      </td>
+                      <td>
+                        John Doe
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $ 123.21
+                      </td>
+                      <td>
+                        April 05, 2015
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Deja planifier
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        User
+                      </th>
+                      <th>
+                        First name
+                      </th>
+                      <th>
+                        Progress
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Deadline
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
+                      </td>
+                      <td>
+                        Peter Meggik
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $ 77.99
+                      </td>
+                      <td>
+                        May 15, 2015
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                      </td>
+                      <td>
+                        Edward
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $ 160.25
+                      </td>
+                      <td>
+                        May 03, 2015
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Rejeter
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        User
+                      </th>
+                      <th>
+                        First name
+                      </th>
+                      <th>
+                        Progress
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Deadline
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
+                      </td>
+                      <td>
+                        Henry Tom
+                      </td>
+                      <td>
+                        <div class="progress">
+                          <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </td>
+                      <td>
+                        $ 150.00
+                      </td>
+                      <td>
+                        June 16, 2015
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div>
