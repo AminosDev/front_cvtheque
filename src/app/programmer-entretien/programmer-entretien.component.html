@@ -1,5 +1,12 @@
-<div class="col-lg-12 grid-margin stretch-card">
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
+      <div class="card-body">
+      
+        <ngb-tabset class="tab-basic">
+          <ngb-tab title="Liste des candidats">
+            <ng-template ngbTabContent>
+              <div class="card">
       <div class="card-body">
         <h4 class="card-title">Les candidats selectionnes</h4>
         
@@ -25,23 +32,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let cand of candidats">
                 <td class="py-1">
                   <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
                 </td>
                 <td>
-                  Herman Beck
+                 {{cand.id}}
                 </td>
                 <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+                 {{cand.name}}
                 </td>
                 <td>
-                  $ 77.99
+                 {{cand.role}}
                 </td>
                 <td>
+                  <p *ngIf="cand.role==='en cours'">
                  <button type="button" (click)="open(content)" class="btn btn-outline-primary">Programmer entretien</button>
+                 <p *ngIf="cand.role==='valide'">
+                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Valider</button>
+                 <p *ngIf="cand.role==='rejete'">
+                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">rejeter</button>
+
                 </td>
               </tr>
               
@@ -53,7 +64,138 @@
         </div>
       </div>
     </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Candidats à valider ou rejeter">
+            <ng-template ngbTabContent>
+              
+<div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Les candidats à valider ou rejeter</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  User
+                </th>
+                <th>
+                  First name
+                </th>
+                <th>
+                  Progress
+                </th>
+                <th>
+                  Amount
+                </th>
+                <th>
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let cand of candidats" >
+              <tr *ngIf="cand.role==='en cours'"  >
+                <td class="py-1">
+                  <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                </td>
+                <td>
+                 {{cand.id}}
+                </td>
+                <td>
+                 {{cand.name}}
+                </td>
+                <td>
+                 {{cand.role}}
+                </td>
+                <td>
+                  <p *ngIf="cand.role==='en cours'">
+                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Valider</button>
+               
+                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">rejeter</button>
+
+                </td>
+              </tr>
+              
+              
+           
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+              
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Candidats validés">
+            <ng-template ngbTabContent>
+              <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Les candidats validé</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  User
+                </th>
+                <th>
+                  First name
+                </th>
+                <th>
+                  Progress
+                </th>
+                <th>
+                  Amount
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody *ngFor="let cand of candidats">
+              <tr *ngIf="cand.role==='valide'" >
+             
+                <td class="py-1">
+                  <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                </td>
+                <td>
+                 {{cand.id}}
+                </td>
+                <td>
+                 {{cand.name}}
+                </td>
+                <td>
+                 {{cand.role}}
+                </td>
+
+                <td>
+                  <p *ngIf="cand.role==='Détails'">
+                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Programmer entretien</button>
+                
+
+                </td>
+
+              </tr>
+              
+              
+           
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
   </div>
+  
 
   <ng-template #content let-modal>
   <div class="modal-header">

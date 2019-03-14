@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'tooltips', component: TooltipsComponent },
   { path: 'carousel', component: CarouselComponent },
   { path: 'tabs', component: TabsComponent },
-  { path: 'planification', component: PlanificationComponent }
+  { path: 'planification', component: PlanificationComponent },
   { path: 'progEntretien', component: ProgrammerEntretienComponent }
 ];
 

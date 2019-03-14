@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Candidat} from '../candidat';
 
 @Component({
   selector: 'app-programmer-entretien',
@@ -9,6 +10,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ProgrammerEntretienComponent implements OnInit {
 		 closeResult: string;
 
+     candidats =[new Candidat(1,"yassine","valide"),
+     new Candidat(2,"hamid","en cours"),
+     new Candidat(3,"achraf","rejete"),
+     new Candidat(4,"achraf","en cours")
+     new Candidat(5,"achraf","valide")
+      ];
 
   constructor(private modalService: NgbModal) { }
 
