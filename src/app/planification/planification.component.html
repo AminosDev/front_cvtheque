@@ -1,109 +1,117 @@
 <div class="row">
 
+    <div class="col-md-12 grid-margin stretch-card">
+
+        <div class="card">
+    
+    
+          <ngb-accordion [closeOthers]="true" activeIds="" class="accordion">
+            <ngb-panel id="static-1">
+              <ng-template ngbPanelTitle>
+                <h6 class="mb-0">
+                  <h5 class="display-5"><i class="fa fa-filter icon-lg"></i>Filtre de competences</h5>
+                </h6>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="col-md-12 display-5">
+                  <div class="row">
+    
+                    <div class="col-sm-4">
+                      <div class="pretty p-icon p-round">
+                        <input type="radio" checked name="icon_solid" />
+                        <div class="state p-primary">
+                          <i class="icon mdi mdi-check"></i>
+                          <label>RT</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="pretty p-icon p-round">
+                        <input type="radio" name="icon_solid" />
+                        <div class="state p-primary">
+                          <i class="icon mdi mdi-check"></i>
+                          <label>MANAGER</label>
+                        </div>
+                      </div>
+                    </div>
+    
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12">
+    
+                  <div class="row">
+                    <div class="col-sm-12">
+    
+                      <label>Competences</label>
+                      <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true"
+                        placeholder="Choisir les competences" [(ngModel)]="selectedCityIds">
+                      </ng-select>
+                      <!--<p>
+                        Selected cities: {{selectedCityIds}}
+                    </p>-->
+                    </div>
+    
+                  </div>
+                </div>
+                <hr>
+                <!--<div class="col-md-12">
+    
+                  <div class="row">
+    
+                    <div class="col-sm-4">
+                      <div class="pretty p-switch p-fill">
+                        <input type="checkbox" />
+                        <div class="state p-primary">
+                          <label>JAVA</label>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-sm-5">
+                      <div class="pretty p-switch p-fill">
+                        <input type="checkbox" />
+                        <div class="state p-primary">
+                          <label>.NET</label>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-sm-4">
+                      <div class="pretty p-switch p-fill">
+                        <input type="checkbox" />
+                        <div class="state p-primary">
+                          <label>PHP</label>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-sm-5">
+                      <div class="pretty p-switch p-fill">
+                        <input type="checkbox" />
+                        <div class="state p-primary">
+                          <label>ANGULAR</label>
+                        </div>
+                      </div>
+                    </div>
+    
+                  </div>
+    
+                </div>
+                <hr>-->
+                <button type="submit" class="btn btn-success mr-2 pull-left"><i class="fa fa-search icon-sm"></i>Chercher</button>
+    
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+    
+          
+        </div>
+      </div>
+
   <div class="col-md-12 grid-margin stretch-card">
 
     <div class="card">
-
-
-      <ngb-accordion [closeOthers]="true" activeIds="" class="accordion">
-        <ngb-panel id="static-1">
-          <ng-template ngbPanelTitle>
-            <h6 class="mb-0">
-              <h5 class="display-5"><i class="fa fa-filter icon-lg"></i>Filtre de competences</h5>
-            </h6>
-          </ng-template>
-          <ng-template ngbPanelContent>
-            <div class="col-md-12 display-5">
-              <div class="row">
-
-                <div class="col-sm-4">
-                  <div class="pretty p-icon p-round">
-                    <input type="radio" checked name="icon_solid" />
-                    <div class="state p-primary">
-                      <i class="icon mdi mdi-check"></i>
-                      <label>RT</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-5">
-                  <div class="pretty p-icon p-round">
-                    <input type="radio" name="icon_solid" />
-                    <div class="state p-primary">
-                      <i class="icon mdi mdi-check"></i>
-                      <label>MANAGER</label>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <hr>
-            <div class="col-md-12">
-
-              <div class="row">
-                <div class="col-sm-12">
-
-                  <label>Competences</label>
-                  <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true"
-                    placeholder="Choisir les competences" [(ngModel)]="selectedCityIds">
-                  </ng-select>
-                  <!--<p>
-                    Selected cities: {{selectedCityIds}}
-                </p>-->
-                </div>
-
-              </div>
-            </div>
-            <hr>
-            <!--<div class="col-md-12">
-
-              <div class="row">
-
-                <div class="col-sm-4">
-                  <div class="pretty p-switch p-fill">
-                    <input type="checkbox" />
-                    <div class="state p-primary">
-                      <label>JAVA</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-5">
-                  <div class="pretty p-switch p-fill">
-                    <input type="checkbox" />
-                    <div class="state p-primary">
-                      <label>.NET</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="pretty p-switch p-fill">
-                    <input type="checkbox" />
-                    <div class="state p-primary">
-                      <label>PHP</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-5">
-                  <div class="pretty p-switch p-fill">
-                    <input type="checkbox" />
-                    <div class="state p-primary">
-                      <label>ANGULAR</label>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-            <hr>-->
-            <button type="submit" class="btn btn-success mr-2 pull-left"><i class="fa fa-search icon-sm"></i>Chercher</button>
-
-          </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
 
       <div class="card-body">
         <ngb-tabset class="tab-solid tab-solid-primary">
@@ -383,6 +391,7 @@
           </ngb-tab>
         </ngb-tabset>
       </div>
+
     </div>
   </div>
 </div>
