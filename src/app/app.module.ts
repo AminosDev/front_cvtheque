@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -53,9 +53,7 @@ import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-
     TooltipsComponent,
     CarouselComponent,
     TabsComponent,
-    
     PlanificationComponent,
-  
     ProgrammerEntretienComponent
   ],
   imports: [
@@ -64,6 +62,7 @@ import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   providers: [],
