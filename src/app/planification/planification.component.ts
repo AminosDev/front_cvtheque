@@ -42,7 +42,7 @@ export class PlanificationComponent implements OnInit {
   cities2 = [
     {id: 1, name: 'JAVA'},
     {id: 2, name: '.NET'},
-    {id: 3, name: 'ANGULAR', disabled: true},
+    {id: 3, name: 'ANGULAR'},
     {id: 4, name: 'PHP'},
     {id: 5, name: 'KOTLIN'}
   ];
