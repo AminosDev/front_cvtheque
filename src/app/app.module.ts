@@ -30,6 +30,8 @@ import { TabsComponent } from './tabs/tabs.component';
 
 import { PlanificationComponent } from './planification/planification.component';
 import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-
     CarouselComponent,
     TabsComponent,
     PlanificationComponent,
-    ProgrammerEntretienComponent
+    ProgrammerEntretienComponent,
+    AdminCreateUserComponent
+   
   ],
   imports: [
     NgSelectModule,
