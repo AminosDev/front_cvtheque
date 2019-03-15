@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -28,6 +29,9 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { CvFormComponent } from './cv-form/cv-form.component';
 
+import { PlanificationComponent } from './planification/planification.component';
+import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,15 +54,18 @@ import { CvFormComponent } from './cv-form/cv-form.component';
     TooltipsComponent,
     CarouselComponent,
     TabsComponent,
-    CvFormComponent
+    CvFormComponent,
+    PlanificationComponent,
+    ProgrammerEntretienComponent
   ],
   imports: [
+    NgSelectModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

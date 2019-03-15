@@ -18,6 +18,9 @@ import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { CvFormComponent } from './cv-form/cv-form.component';
+import { PlanificationComponent } from './planification/planification.component';
+import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -37,7 +40,9 @@ const routes: Routes = [
   { path: 'tooltips', component: TooltipsComponent },
   { path: 'carousel', component: CarouselComponent },
   { path: 'tabs', component: TabsComponent },
-  { path: 'CvForm', component: CvFormComponent }
+  { path: 'CvForm', component: CvFormComponent },
+  { path: 'planification', component: PlanificationComponent },
+  { path: 'progEntretien', component: ProgrammerEntretienComponent }
 ];
 
 @NgModule({
