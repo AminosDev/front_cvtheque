@@ -6,7 +6,7 @@
 
       <div class="card-body">
         <label>Choisir les competences</label>
-        <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Toutes les competences" [(ngModel)]="selectedCityIds">
+        <ng-select [items]="competences" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Toutes les competences" [(ngModel)]="selectedCityIds">
         </ng-select>
       </div>
 
@@ -46,115 +46,35 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td class="py-1">
-                        <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
-                      </td>
-                      <td>
-                        Nom Prenom 1
-                      </td>
-                      <td>
-                        JAVA, ANGULAR
-                      </td>
-                      <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                              <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                              class="fa fa-file-pdf-o"></i></button></a>
-                          </div>
-                      </td>
-                      <td>
-                        <div aria-label="Basic example" class="btn-group" role="group">
-                          <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                              class="fa fa-calendar"></i></button>
-                          <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
-                              class="fa fa-trash"></i></button>
-                          <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
-                              class="mdi mdi-border-color"></i></button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
-                      </td>
-                      <td>
-                          Nom Prenom 2
-                        </td>
-                        <td>
-                          .NET
-                        </td>
-                        <td>
+                  <tbody *ngFor="let cand of candidats" >
+                      <tr *ngIf="cand.statut===1"  >
+                          <td class="py-1">
+                            <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                          </td>
+                          <td>
+                              {{cand.name}}
+                          </td>
+                          <td>
+                              {{cand.competence}}
+                          </td>
+                          <td>
+                              <div aria-label="Basic example" class="btn-group" role="group">
+                                  <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
+                                  class="fa fa-file-pdf-o"></i></button></a>
+                              </div>
+                          </td>
+                          <td>
                             <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                class="fa fa-file-pdf-o"></i></button></a>
+                              <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
+                                  class="fa fa-calendar"></i></button>
+                              <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
+                                  class="fa fa-trash"></i></button>
+                              <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
+                                  class="mdi mdi-border-color"></i></button>
                             </div>
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                                class="fa fa-calendar"></i></button>
-                            <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
-                                class="fa fa-trash"></i></button>
-                            <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
-                                class="mdi mdi-border-color"></i></button>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
-                      </td>
-                      <td>
-                          Nom Prenom 3
-                        </td>
-                        <td>
-                          PHP
-                        </td>
-                        <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                class="fa fa-file-pdf-o"></i></button></a>
-                            </div>
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                                class="fa fa-calendar"></i></button>
-                            <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
-                                class="fa fa-trash"></i></button>
-                            <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
-                                class="mdi mdi-border-color"></i></button>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td class="py-1">
-                        <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
-                      </td>
-                      <td>
-                          Nom Prenom 4
-                        </td>
-                        <td>
-                          JAVA
-                        </td>
-                        <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                class="fa fa-file-pdf-o"></i></button></a>
-                            </div>
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                                class="fa fa-calendar"></i></button>
-                            <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
-                                class="fa fa-trash"></i></button>
-                            <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
-                                class="mdi mdi-border-color"></i></button>
-                          </div>
-                        </td>
-                    </tr>
+                          </td>
+                        </tr>
+                    
                   </tbody>
                 </table>
               </div>
