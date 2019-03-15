@@ -32,6 +32,7 @@ import { CvFormComponent } from './cv-form/cv-form.component';
 import { PlanificationComponent } from './planification/planification.component';
 import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
 import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
+import { ConfigApplicationComponent } from './config-application/config-application.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.
     CvFormComponent,
     PlanificationComponent,
     ProgrammerEntretienComponent,
-    AdminCreateUserComponent
+    AdminCreateUserComponent,
+    ConfigApplicationComponent
    
   ],
   imports: [

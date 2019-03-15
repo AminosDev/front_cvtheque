@@ -2,99 +2,32 @@
     <div class="card">
       <div class="card-body">
       
-        <ngb-tabset class="tab-basic">
-          <ngb-tab title="Creer un utilisateur">
-            <ng-template ngbTabContent>
-              <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Informations personnelles</h4>
-        
-       
-
-    <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nom</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Prenom</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Date of naissance</label>
-                <div class="col-sm-9">
-                  <input class="form-control" placeholder="dd/mm/yyyy"/>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Role</label>
-                <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>Referent technique</option>
-                    <option>Manager</option>
-                    <option>Directeur general</option>
-                    
-                  </select>
-                </div>
-              </div>
-               <button type="submit" class="btn btn-success mr-2" >Submit</button>
-              
-            </div>
-            
-          </div>
-
-
-
-       
-      </div>
-    </div>
-            </ng-template>
-          </ngb-tab>
+        <ngb-tabset class="tab-solid tab-solid-primary">
+          
           <ngb-tab title="Lister les utilisateurs">
             <ng-template ngbTabContent>
               
 <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Liste des utilisateurs</h4>
-        
+         <button type="button" (click)="open(ajouterUser)" class="btn btn-link btn-fw">Ajouter un utilisateur</button>        
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>
-                  User
+                  Nom
                 </th>
                 <th>
-                  First name
+                  Prenom
                 </th>
                 <th>
-                  Progress
+                  Email
                 </th>
                 <th>
-                  Amount
+                  Date de naissance
+                </th>
+                <th>
+                  Role
                 </th>
                 <th>
                   Action
@@ -103,8 +36,8 @@
             </thead>
             <tbody>
               <tr>
-                <td class="py-1">
-                  <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                <td>
+                
                 </td>
                 <td>
             
@@ -117,7 +50,20 @@
                 </td>
                 <td>
                  
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Modifier</button>
+                 
+               
+                
+
+                </td>
+                <td>
+                 
+                 <div aria-label="Basic example" class="btn-group" role="group">
+                         
+                            <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
+                                class="fa fa-trash"></i></button>
+                            <button class="btn btn-warning icon-btn" type="button" (click)="open(ajouterUser)" ><i
+                                class="mdi mdi-border-color"></i></button>
+                          </div>
                
                 
 
@@ -146,9 +92,9 @@
   
 
 
-  <ng-template #content let-modal>
+  <ng-template #ajouterUser let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Entrer la date de l'entrerien</h4>
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un utilisateur</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -156,18 +102,56 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Date de l'entretien</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
-        
-      </div>
+                <label for="exampleInputEmail1">Nom</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Prenom</label>
+                <input class="form-control" id="exampleInputPassword1" rows="2"  placeholder="Prenom">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input class="form-control" id="exampleInputPassword1" rows="2"  placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+               
+                  <select class="form-control">
+                    <option>Referent technique</option>
+                    <option>Manager</option>
+                    <option>Directeur general</option>
+                    
+                  </select>
+           
+              </div>
+
+
     </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
 </ng-template>
+
+
+
+  <ng-template #supprimer let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Supprimer </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            
+            <h4 class="text-warning">Voulez-vous vraiment supprimer cet utilisateur ?</h4>
+            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+        <button type="submit" [disabled]="loading" class="btn btn-outline-warning">Supprimer</button>
+      </div>
