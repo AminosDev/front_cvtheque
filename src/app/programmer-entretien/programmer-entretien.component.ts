@@ -13,7 +13,7 @@ export class ProgrammerEntretienComponent implements OnInit {
      candidats =[new Candidat(1,"yassine","valide"),
      new Candidat(2,"hamid","en cours"),
      new Candidat(3,"achraf","rejete"),
-     new Candidat(4,"achraf","en cours")
+     new Candidat(4,"achraf","en cours"),
      new Candidat(5,"achraf","valide")
       ];
 
