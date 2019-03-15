@@ -31,6 +31,8 @@ import { CvFormComponent } from './cv-form/cv-form.component';
 
 import { PlanificationComponent } from './planification/planification.component';
 import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-
     TabsComponent,
     CvFormComponent,
     PlanificationComponent,
-    ProgrammerEntretienComponent
+    ProgrammerEntretienComponent,
+    AdminCreateUserComponent
+   
   ],
   imports: [
     NgSelectModule,
