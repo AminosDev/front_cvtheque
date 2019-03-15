@@ -1,0 +1,154 @@
+<div class="form-sample" [formGroup]="Cvform">
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Cree un nouveau Cv</h4>
+
+        <p class="card-description">
+          Information personels
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Nom</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Prenom</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Cin</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Date of Birth</label>
+              <div class="col-sm-10">
+                <input class="form-control" placeholder="dd/mm/yyyy"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <div class="input-group">
+              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                <i class="mdi mdi-email-outline text-white"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <div class="input-group">
+              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                <i class="mdi mdi-phone text-white"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <div class="input-group">
+              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                <i class="mdi mdi-map-marker-outline text-white"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1">
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Formations</h4>
+
+
+      <div
+  class="col-md-12"
+  *ngFor="let formation of formationFormGroup.controls; let i=index;"
+><hr/>
+      <form  class="form-sample" [formGroupName]="i">
+        <div class="row">
+        <div class="col-md-3">
+        <p class="card-description">
+         Formation {{i+1}}
+        </p>
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-md-1"> <button  type="button" (click)="removeFormation(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close "></i></button></div>
+      </div>
+        <div class="row">
+        <div class="col-md-12">
+          <div class="form-group row">
+            <label class="col-sm-1 col-form-label">Nom de l'etablissement</label>
+            <div class="col-sm-11">
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">date debut</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">date de fin</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="form-group row">
+                <label class="col-sm-1 col-form-label" for="exampleTextarea1">Description</label>
+                  <div class="col-sm-11">
+                <textarea class="form-control" id="exampleTextarea1" rows="5"></textarea>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-4">
+
+
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </form>
+      </div>
+      <button type="button" class="btn btn-success" (click)="addFormation()">
+          <i class="mdi mdi-plus-circle-outline"></i>Ajouter Formation</button>
+    </div>
+  </div>
+</div>
+</div>

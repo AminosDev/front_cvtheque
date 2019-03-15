@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -27,6 +27,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { CvFormComponent } from './cv-form/cv-form.component';
 
 import { PlanificationComponent } from './planification/planification.component';
 import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
@@ -55,6 +56,7 @@ import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.
     TooltipsComponent,
     CarouselComponent,
     TabsComponent,
+    CvFormComponent,
     PlanificationComponent,
     ProgrammerEntretienComponent,
     AdminCreateUserComponent
@@ -67,7 +69,7 @@ import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
