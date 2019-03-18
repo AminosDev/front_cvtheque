@@ -1,154 +1,298 @@
 <div class="form-sample" [formGroup]="Cvform">
-<div class="col-md-12 grid-margin stretch-card">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Cree un nouveau Cv</h4>
+    <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <ngb-tabset class="tab-solid tab-solid-primary">
+                    <ngb-tab>
+                      <ng-template ngbTabTitle>
+                        <i class="fa fa-user"></i>Inforamtions Personnels
+                      </ng-template>
+                      <ng-template ngbTabContent>
+                          <div class="row">
+                              <div class="form-group col-md-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                    <i class="fa fa fa-user-o text-white"></i>
+                                  </span>
+                                  <input type="text" class="form-control"formControlName="Nom" placeholder="Nom" aria-label="Nom" aria-describedby="colored-addon1">
+                                </div>
+                              </div>
+                                  <div class="form-group col-md-6">
+                                    <div class="input-group">
+                                      <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                        <i class="fa fa fa-user-o text-white"></i>
+                                      </span>
+                                      <input type="text" class="form-control"formControlName="Prenom" placeholder="Prenom" aria-label="Adresse" aria-describedby="colored-addon1">
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                  <div class="input-group">
+                                    <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                      <i class="fa fa-address-card-o text-white"></i>
+                                    </span>
+                                    <input type="text" class="form-control"formControlName="Cin" placeholder="Cin" aria-label="Cin" aria-describedby="colored-addon1">
+                                  </div>
+                                </div>
+                                    <div class="form-group col-md-6">
+                                      <div class="input-group">
+                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                              <i class="fa fa-calendar text-white"></i>
+                                            </span>
+                                        <input id="DateDeNaissance" formControlName="DateNaissance" class="form-control" placeholder="yyyy-mm-dd" name="dp" min ngbDatepicker #dp="ngbDatepicker">
+                                        <div class="input-group-append">
+                                            <button class="but-cal btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
+                                        </div>
+                                      </div>
+                                    </div>
+                              </div>
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                            <div class="input-group">
+                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                <i class="mdi mdi-email-outline text-white"></i>
+                              </span>
+                              <input type="text" class="form-control" formControlName="Email" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                            <div class="input-group">
+                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                <i class="mdi mdi-phone text-white"></i>
+                              </span>
+                              <input type="text" class="form-control" formControlName="Telephone" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                            <div class="input-group">
+                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                <i class="mdi mdi-map-marker-outline text-white"></i>
+                              </span>
+                              <input type="text" class="form-control"formControlName="Adresse" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1">
+                            </div>
+                          </div>
+                        </div>
+                </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle>
+                        <i class="fa fa-graduation-cap"></i>Formations
+                      </ng-template>
+                      <ng-template ngbTabContent>
+                          <div>
+                              <div  forArrayName="formations" class="col-md-12" *ngFor="let formation of formationFormGroup.controls;let i=index;"><hr/>
+                              <div  class="form-sample" [formGroup]="formation">
+                                <div class="row">
+                                <div class="col-md-3">
+                                <p class="card-description">
+                                 Formation {{i+1}}
+                                </p>
+                                </div>
+                                <div class="col-md-8"></div>
+                                <div class="col-md-1"> <button  type="button" (click)="removeFormation(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
+                              </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="input-group">
+                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                            <i class="fa fa-university text-white"></i>
+                                          </span>
+                                          <input type="text" class="form-control" placeholder="NomEtablissement" aria-label="NomEtablissement" formControlName="NomEtablissement" aria-describedby="colored-addon1">
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                                <i class="fa fa-calendar text-white"></i>
+                                              </span>
+                                          <input id="DateDebut" formControlName="DateDebut" class="form-control" placeholder="Date du debut" name="dd" min ngbDatepicker #dd="ngbDatepicker">
+                                          <div class="input-group-append">
+                                              <button class="but-cal btn btn-outline-secondary calendar" (click)="dd.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                          <div class="input-group">
+                                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                                  <i class="fa fa-calendar text-white"></i>
+                                                </span>
+                                            <input id="DateFin" formControlName="DateFin" class="form-control" placeholder="Date de fin" name="df" min ngbDatepicker #df="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="but-cal btn btn-outline-secondary calendar" (click)="df.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="input-group">
+                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                            <i class="fa fa-align-left text-white"></i>
+                                          </span>
+                                          <textarea class="form-control" id="exampleTextarea1" rows="5" placeholder="Description" formControlName="Description"></textarea>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-5"></div>
+                                  <div class="col-md-4">
 
-        <p class="card-description">
-          Information personels
-        </p>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Nom</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Prenom</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Cin</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Date of Birth</label>
-              <div class="col-sm-10">
-                <input class="form-control" placeholder="dd/mm/yyyy"/>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <div class="input-group">
-              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
-                <i class="mdi mdi-email-outline text-white"></i>
-              </span>
-              <input type="text" class="form-control" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <div class="input-group">
-              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
-                <i class="mdi mdi-phone text-white"></i>
-              </span>
-              <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-12">
-            <div class="input-group">
-              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
-                <i class="mdi mdi-map-marker-outline text-white"></i>
-              </span>
-              <input type="text" class="form-control" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1">
-            </div>
-          </div>
-        </div>
+
+                                  </div>
+                                  <div class="col-md-3"></div>
+                                </div>
+                              </div>
+                              </div>
+                            </div>
+                              <button type="button" class="btn btn-success" (click)="addFormation()">
+                                  <i class="mdi mdi-plus-circle-outline"></i>Ajouter Formation</button>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle>
+                        <i class="fa fa-puzzle-piece"></i>Competances
+                      </ng-template>
+                      <ng-template ngbTabContent>
+
+                              <div forArrayName="competances" class="col-md-12" *ngFor="let competance of competanceFormGroup.controls;let i=index;"><hr/>
+                              <form  class="form-sample"  [formGroup]="competance">
+                                <div class="row">
+                                <div class="col-md-3">
+                                <p class="card-description">
+                                 Competance {{i}}
+                                </p>
+                                </div>
+                                <div class="col-md-8"></div>
+                                <div class="col-md-1"><button  type="button" (click)="removeCompetance(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
+                              </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Competance</label>
+                                    <div class="col-sm-8">
+                                      <input type="text" class="form-control" formControlName="Competance" />
+                                    </div>
+                                  </div>
+                                </div>
 
 
+                                  <div class="col-md-6">
+                                    <div class="form-group row">
+                                      <label class="col-sm-3 col-form-label">Niveau</label>
+                                      <div class="col-sm-8">
+                                        <ngb-rating class="rating" formControlName="Niveau" [(rate)]="Cselected[i]" (hover)="Chovereds[i]=$event" (leave)="Chovereds[i]=0" max="5" [readonly]="false"></ngb-rating>
+                                      </div>
+                                    </div>
+                                    <pre>
+                                      Selected: <b>{{Cselected[i]}}</b>
+                                      Hovered: <b>{{Chovereds[i]}}</b>
+                                      Hovered: <b><button (click)="getConsole(competance)"></button></b>
+                                      </pre>
+                                  </div>
+                                </div>
+                              </form>
+                              </div>
+
+                              <button type="button" class="btn btn-success" (click)="addCompetance()">
+                                  <i class="mdi mdi-plus-circle-outline"></i>Ajouter Competances</button>
+                                </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                        <ng-template ngbTabTitle>
+                          <i class="fa fa-language"></i>Langues
+                        </ng-template>
+                        <ng-template ngbTabContent>
+
+                                <div class="col-md-12" forArrayName="langues" *ngFor="let langue of LangueFormGroup.controls;let i=index;">
+                                <div  [formGroup]="langue">
+                                    <hr/>
+                                  <div class="row">
+                                  <div class="col-md-3">
+                                  <p class="card-description">
+                                   Langue {{i+1}}
+                                  </p>
+                                  </div>
+                                  <div class="col-md-8"></div>
+                                  <div class="col-md-1"> <button  type="button" (click)="removeLangue(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Langue</label>
+
+                                        <div class="col-sm-8">
+                                          <input type="text" formControlName="Langue" class="form-control" formControlName="Langue"/>
+
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                      <div class="col-md-6">
+                                        <div class="form-group row">
+                                          <label class="col-sm-3 col-form-label">Niveau</label>
+                                          <div class="col-sm-8">
+                                              <ngb-rating class="rating" formControlName="Niveau" [(rate)]="Lselected[i]" (hover)="Lhovereds[i]=$event" (leave)="Lhovereds[i]=0" max="5" [readonly]="false"></ngb-rating>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <pre>
+                                          Selected: <b>{{Lselected[i]}}</b>
+                                          Hovered: <b>{{Lhovereds[i]}}</b>
+                                          Hovered: <b><button (click)="getConsole(langue)"></button></b>
+                                          </pre>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <button type="button" class="btn btn-success" (click)="addLangue()">
+                                    <i class="mdi mdi-plus-circle-outline"></i>Ajouter Langue</button>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab>
+                          <ng-template ngbTabTitle>
+                            <i class="fa fa-gamepad"></i>Loisir
+                          </ng-template>
+                          <ng-template ngbTabContent>
+                              <div >
+                                  <div forArrayName="loisirs" class="col-md-12" *ngFor="let loisir of LoisirFormGroup.controls;let i=index;"><hr/>
+                                  <form  class="form-sample" [formGroup]="loisir">
+                                    <div class="row">
+                                    <div class="col-md-3">
+                                    <p class="card-description">
+                                     Loisir {{i+1}}
+                                    </p>
+                                    </div>
+                                    <div class="col-md-8"></div>
+                                    <div class="col-md-1"> <button  type="button" (click)="removeLoisir(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
+                                  </div>
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="form-group row">
+                                        <label class="col-sm-1 col-form-label">Loisir</label>
+                                        <div class="col-sm-11">
+                                          <input type="text" class="form-control" formControlName="Loisir" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  </form>
+                                  </div>
+                                </div>
+                                  <button type="button" class="btn btn-success" (click)="addLoisir()">
+                                      <i class="mdi mdi-plus-circle-outline"></i>Ajouter Loisir</button>
+                          </ng-template>
+                        </ngb-tab>
+                  </ngb-tabset>
+                </div>
+              </div>
+            </div>
     </div>
-  </div>
-</div>
-<div class="col-md-12 grid-margin stretch-card">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Formations</h4>
-
-
-      <div
-  class="col-md-12"
-  *ngFor="let formation of formationFormGroup.controls; let i=index;"
-><hr/>
-      <form  class="form-sample" [formGroupName]="i">
-        <div class="row">
-        <div class="col-md-3">
-        <p class="card-description">
-         Formation {{i+1}}
-        </p>
-        </div>
-        <div class="col-md-8"></div>
-        <div class="col-md-1"> <button  type="button" (click)="removeFormation(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close "></i></button></div>
-      </div>
-        <div class="row">
-        <div class="col-md-12">
-          <div class="form-group row">
-            <label class="col-sm-1 col-form-label">Nom de l'etablissement</label>
-            <div class="col-sm-11">
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">date debut</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">date de fin</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-              <div class="form-group row">
-                <label class="col-sm-1 col-form-label" for="exampleTextarea1">Description</label>
-                  <div class="col-sm-11">
-                <textarea class="form-control" id="exampleTextarea1" rows="5"></textarea>
-                  </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-5"></div>
-          <div class="col-md-4">
-
-
-          </div>
-          <div class="col-md-3"></div>
-        </div>
-      </form>
-      </div>
-      <button type="button" class="btn btn-success" (click)="addFormation()">
-          <i class="mdi mdi-plus-circle-outline"></i>Ajouter Formation</button>
-    </div>
-  </div>
-</div>
-</div>
