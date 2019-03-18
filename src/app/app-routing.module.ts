@@ -20,6 +20,8 @@ import { TabsComponent } from './tabs/tabs.component';
 import { CvFormComponent } from './cv-form/cv-form.component';
 import { PlanificationComponent } from './planification/planification.component';
 import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-entretien.component';
+import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
+import { ConfigApplicationComponent  } from './config-application/config-application.component';
 
 
 const routes: Routes = [
@@ -42,7 +44,9 @@ const routes: Routes = [
   { path: 'tabs', component: TabsComponent },
   { path: 'CvForm', component: CvFormComponent },
   { path: 'planification', component: PlanificationComponent },
-  { path: 'progEntretien', component: ProgrammerEntretienComponent }
+  { path: 'progEntretien', component: ProgrammerEntretienComponent },
+  { path: 'createUser',component: AdminCreateUserComponent },
+  { path :'config', component :ConfigApplicationComponent  }
 ];
 
 @NgModule({

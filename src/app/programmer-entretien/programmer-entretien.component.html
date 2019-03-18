@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
       
-        <ngb-tabset class="tab-basic">
+        <ngb-tabset class="tab-solid tab-solid-primary">
           <ngb-tab title="Liste des candidats">
             <ng-template ngbTabContent>
               <div class="card">
@@ -11,6 +11,9 @@
         <h4 class="card-title">Les candidats selectionnes</h4>
         
         <div class="table-responsive">
+          <nav class="navbar">
+                  <input class="form-control" type="text" placeholder="Rechercher" name="search" [(ngModel)]="filter">
+                </nav>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -31,8 +34,8 @@
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr *ngFor="let cand of candidats">
+            <tbody  *ngFor="let cand of candidats | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+              <tr>
                 <td class="py-1">
                   <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
                 </td>
@@ -60,6 +63,7 @@
            
              
             </tbody>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </table>
         </div>
       </div>
@@ -214,6 +218,7 @@
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
           </div>
         </div>
+        
       </div>
     </form>
   </div>

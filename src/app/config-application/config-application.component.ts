@@ -1,27 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Candidat} from '../candidat';
 
 @Component({
-  selector: 'app-programmer-entretien',
-  templateUrl: './programmer-entretien.component.html',
-  styleUrls: ['./programmer-entretien.component.scss']
+  selector: 'app-config-application',
+  templateUrl: './config-application.component.html',
+  styleUrls: ['./config-application.component.scss']
 })
-export class ProgrammerEntretienComponent implements OnInit {
-		 closeResult: string;
-
-     candidats =[new Candidat(1,"yassine","valide",1,"JAVA, ANGULAR"),
-     new Candidat(2,"hamid","en cours",1,"JAVA, ANGULAR"),
-     new Candidat(3,"achraf","rejete",1,"JAVA, ANGULAR"),
-     new Candidat(4,"achraf","en cours",1,"JAVA, ANGULAR"),
-     new Candidat(5,"achraf","valide",1,"JAVA, ANGULAR"),
-      ];
-
+export class ConfigApplicationComponent implements OnInit {
+closeResult: string;
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
-  open(content) {
+open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -38,5 +29,4 @@ export class ProgrammerEntretienComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }
