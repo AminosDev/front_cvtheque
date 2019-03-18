@@ -6,7 +6,8 @@
 
       <div class="card-body">
         <label>Choisir les competences</label>
-        <ng-select [items]="competences" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Toutes les competences" [(ngModel)]="selectedCityIds">
+        <ng-select [items]="competences" bindLabel="name" bindValue="id" [multiple]="true"
+          placeholder="Toutes les competences" [(ngModel)]="selectedCityIds">
         </ng-select>
       </div>
 
@@ -26,6 +27,74 @@
             <ng-template ngbTabContent>
 
               <div class="table-responsive">
+                <nav class="navbar">
+                  <input class="form-control" type="text" placeholder="Rechercher" name="search" [(ngModel)]="filter">
+                </nav>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Image
+                      </th>
+                      <th (click)="sort('name')">Nom et prenom
+                        <span class="glyphicon sort-icon" *ngIf="key =='name'"
+                          [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                      </th>
+                      <th (click)="sort('competence')">Competence
+                        <span class="glyphicon sort-icon" *ngIf="key =='name'"
+                          [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                      </th>
+                      <th>
+                        CV
+                      </th>
+                      <th>
+                        Operations
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    *ngFor="let cand of candidats | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                    <tr *ngIf="cand.statut===1">
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
+                      </td>
+                      <td>
+                        {{cand.name}}
+                      </td>
+                      <td>
+                        {{cand.competence}}
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
+                                class="fa fa-file-pdf-o"></i></button></a>
+                        </div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)"
+                            title="Planifier entretien avec RT"><i class="fa fa-calendar"></i></button>
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
+                              class="fa fa-trash"></i></button>
+                          <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm"><i
+                              class="mdi mdi-border-color"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </table>
+              </div>
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              Entretien RT
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>
                     <tr>
@@ -42,72 +111,11 @@
                         CV
                       </th>
                       <th>
+                        Statut
+                      </th>
+                      <th>
                         Operations
                       </th>
-                    </tr>
-                  </thead>
-                  <tbody *ngFor="let cand of candidats" >
-                      <tr *ngIf="cand.statut===1"  >
-                          <td class="py-1">
-                            <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>
-                              {{cand.name}}
-                          </td>
-                          <td>
-                              {{cand.competence}}
-                          </td>
-                          <td>
-                              <div aria-label="Basic example" class="btn-group" role="group">
-                                  <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                  class="fa fa-file-pdf-o"></i></button></a>
-                              </div>
-                          </td>
-                          <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                              <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                                  class="fa fa-calendar"></i></button>
-                              <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
-                                  class="fa fa-trash"></i></button>
-                              <button class="btn btn-warning icon-btn" type="button" routerLink="/CvForm" ><i
-                                  class="mdi mdi-border-color"></i></button>
-                            </div>
-                          </td>
-                        </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
-
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab>
-            <ng-template ngbTabTitle>
-              Entretien RT
-            </ng-template>
-            <ng-template ngbTabContent>
-              <div class="table-responsive">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                        <th>
-                            Image
-                          </th>
-                          <th>
-                            Nom et prenom
-                          </th>
-                          <th>
-                            Competences
-                          </th>
-                          <th>
-                            CV
-                          </th>
-                          <th>
-                              Statut
-                          </th>
-                          <th>
-                            Operations
-                          </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -116,88 +124,95 @@
                         <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
                       </td>
                       <td>
-                          Nom Prenom 4
-                        </td>
-                        <td>
-                          ANGULAR, .NET
-                        </td>
-                        <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
+                        Nom Prenom 4
+                      </td>
+                      <td>
+                        ANGULAR, .NET
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
                                 class="fa fa-file-pdf-o"></i></button></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;" (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div></div> 
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec RT"><i
-                                class="fa fa-calendar"></i></button>
-                            
-                                <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)" title="Archiver le condidat"><i
-                                  class="fa fa-archive"></i></button>
-                            
-                          </div>
-                        </td>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;"
+                            (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div>
+                        </div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)"
+                            title="Planifier entretien avec RT"><i class="fa fa-calendar"></i></button>
+
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
                     </tr>
                     <tr>
-                        <td class="py-1">
-                          <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
-                        </td>
-                        <td>
-                            Nom Prenom 5
-                          </td>
-                          <td>
-                            ANGULAR
-                          </td>
-                          <td>
-                              <div aria-label="Basic example" class="btn-group" role="group">
-                                  <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                  class="fa fa-file-pdf-o"></i></button></a>
-                              </div>
-                          </td>
-                          <td>
-                              <div class="badge badge-warning badge-pill">En attente</div> 
-                          </td>
-                          <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                              
-                              
-                              
-                                  <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)" title="Archiver le condidat"><i
-                                    class="fa fa-archive"></i></button>
-                              
-                            </div>
-                          </td>
-                      </tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
+                      </td>
+                      <td>
+                        Nom Prenom 5
+                      </td>
+                      <td>
+                        ANGULAR
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
+                                class="fa fa-file-pdf-o"></i></button></a>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-warning badge-pill">En attente</div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+
+
+
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
+                    </tr>
                     <tr>
                       <td class="py-1">
                         <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
                       </td>
                       <td>
-                          Nom Prenom 6
-                        </td>
-                        <td>
-                          JAVA, PHP
-                        </td>
-                        <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
+                        Nom Prenom 6
+                      </td>
+                      <td>
+                        JAVA, PHP
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
                                 class="fa fa-file-pdf-o"></i></button></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="badge badge-danger badge-pill">Refuse <div style="cursor: pointer;" (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div></div> 
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            
-                              <button class="btn btn-danger icon-btn" type="button" (click)="open(content)" title="Archiver le condidat"><i
-                                class="fa fa-archive"></i></button>
-                            
-                          </div>
-                        </td>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-danger badge-pill">Refuse <div style="cursor: pointer;"
+                            (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div>
+                        </div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(content)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -207,31 +222,31 @@
           </ngb-tab>
           <ngb-tab>
             <ng-template ngbTabTitle>
-                Entretien Manager
+              Entretien Manager
             </ng-template>
             <ng-template ngbTabContent>
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                        <th>
-                            Image
-                          </th>
-                          <th>
-                            Nom et prenom
-                          </th>
-                          <th>
-                            Competences
-                          </th>
-                          <th>
-                            CV
-                          </th>
-                          <th>
-                              Statut
-                          </th>
-                          <th>
-                            Operations
-                          </th>
+                      <th>
+                        Image
+                      </th>
+                      <th>
+                        Nom et prenom
+                      </th>
+                      <th>
+                        Competences
+                      </th>
+                      <th>
+                        CV
+                      </th>
+                      <th>
+                        Statut
+                      </th>
+                      <th>
+                        Operations
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -240,29 +255,32 @@
                         <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
                       </td>
                       <td>
-                          Nom Prenom 7
-                        </td>
-                        <td>
-                           PHP
-                        </td>
-                        <td>
-                            <div aria-label="Basic example" class="btn-group" role="group">
-                                <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
+                        Nom Prenom 7
+                      </td>
+                      <td>
+                        PHP
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
                                 class="fa fa-file-pdf-o"></i></button></a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;" (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div></div> 
-                        </td>
-                        <td>
-                          <div aria-label="Basic example" class="btn-group" role="group">
-                            <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)" title="Planifier entretien avec DG"><i
-                                class="fa fa-calendar"></i></button>
-                            <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)" title="Archiver le condidat"><i
-                                class="fa fa-archive"></i></button>
-                            
-                          </div>
-                        </td>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;"
+                            (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div>
+                        </div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)"
+                            title="Planifier entretien avec DG"><i class="fa fa-calendar"></i></button>
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -275,102 +293,106 @@
             </ng-template>
           </ngb-tab>
           <ngb-tab>
-              <ng-template ngbTabTitle>
-                  Entretien DG
-              </ng-template>
-              <ng-template ngbTabContent>
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                          <th>
-                              Image
-                            </th>
-                            <th>
-                              Nom et prenom
-                            </th>
-                            <th>
-                              Competences
-                            </th>
-                            <th>
-                              CV
-                            </th>
-                            <th>
-                                Statut
-                            </th>
-                            <th>
-                              Operations
-                            </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      
-                        <tr>
-                            <td class="py-1">
-                              <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
-                            </td>
-                            <td>
-                                Nom Prenom 9
-                              </td>
-                              <td>
-                                 JAVA
-                              </td>
-                              <td>
-                                  <div aria-label="Basic example" class="btn-group" role="group">
-                                      <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                      class="fa fa-file-pdf-o"></i></button></a>
-                                  </div>
-                              </td>
-                              <td>
-                                  <div class="badge badge-warning badge-pill">En attente</div> 
-                              </td>
-                              <td>
-                                <div aria-label="Basic example" class="btn-group" role="group">
-                                  
-                                  <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)" title="Archiver le condidat"><i
-                                      class="fa fa-archive"></i></button>
-                                  
-                                </div>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td class="py-1">
-                                <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
-                              </td>
-                              <td>
-                                  Nom Prenom 8
-                                </td>
-                                <td>
-                                   JAVA, ANGULAR
-                                </td>
-                                <td>
-                                    <div aria-label="Basic example" class="btn-group" role="group">
-                                        <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank" ><button class="btn btn-primary icon-btn" type="button" ><i
-                                        class="fa fa-file-pdf-o"></i></button></a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;" (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div></div> 
-                                </td>
-                                <td>
-                                  <div aria-label="Basic example" class="btn-group" role="group">
-                                    
-                                    <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)" title="Archiver le condidat"><i
-                                        class="fa fa-archive"></i></button>
-                                    
-                                  </div>
-                                </td>
-                            </tr>
-                    </tbody>
-                  </table>
-  
-  
-  
-  
-                </div>
-  
-              </ng-template>
-            </ngb-tab>
+            <ng-template ngbTabTitle>
+              Entretien DG
+            </ng-template>
+            <ng-template ngbTabContent>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Image
+                      </th>
+                      <th>
+                        Nom et prenom
+                      </th>
+                      <th>
+                        Competences
+                      </th>
+                      <th>
+                        CV
+                      </th>
+                      <th>
+                        Statut
+                      </th>
+                      <th>
+                        Operations
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
+                      </td>
+                      <td>
+                        Nom Prenom 9
+                      </td>
+                      <td>
+                        JAVA
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
+                                class="fa fa-file-pdf-o"></i></button></a>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-warning badge-pill">En attente</div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="py-1">
+                        <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
+                      </td>
+                      <td>
+                        Nom Prenom 8
+                      </td>
+                      <td>
+                        JAVA, ANGULAR
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+                          <a href="assets/pdf/DiagrammeClasses_cvtheque_new.pdf" target="_blank"><button
+                              class="btn btn-primary icon-btn" type="button"><i
+                                class="fa fa-file-pdf-o"></i></button></a>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="badge badge-success badge-pill">Approuver <div style="cursor: pointer;"
+                            (click)="open(remarque)" class="badge badge-primary badge-pill">Remarque</div>
+                        </div>
+                      </td>
+                      <td>
+                        <div aria-label="Basic example" class="btn-group" role="group">
+
+                          <button class="btn btn-danger icon-btn" type="button" (click)="open(archiver)"
+                            title="Archiver le condidat"><i class="fa fa-archive"></i></button>
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+
+              </div>
+
+            </ng-template>
+          </ngb-tab>
         </ngb-tabset>
       </div>
 
@@ -449,86 +471,86 @@
     <form>
       <div class="form-group">
         <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                    <th>
-                        Image
-                      </th>
-                      <th>
-                        Nom et prenom
-                      </th>
-                      <th>
-                        Competences
-                      </th>                      
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="py-1">
-                      <div class="pretty p-icon p-round">
-                          <input type="radio" name="icon_solid" />
-                          <div class="state p-primary">
-                              <i class="icon mdi mdi-check"></i>
-                              <label></label>
-                          </div>
-                          
-                      </div>
-                      <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
-                  </td>
-                  <td>
-                      Nom Prenom 1
-                    </td>
-                    <td>
-                       PHP, JAVA, .NET
-                    </td>                    
-                </tr>
-                <tr>
-                    <td class="py-1">
-                        <div class="pretty p-icon p-round">
-                            <input type="radio" name="icon_solid" />
-                            <div class="state p-primary">
-                                <i class="icon mdi mdi-check"></i>
-                                <label></label>
-                            </div>
-                            
-                        </div>
-                        <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
-                    </td>
-                    <td>
-                        Nom Prenom 2
-                      </td>
-                      <td>
-                         ANGULAR, REACT
-                      </td>                    
-                  </tr>
-                  <tr>
-                      <td class="py-1">
-                          <div class="pretty p-icon p-round">
-                              <input type="radio" name="icon_solid" />
-                              <div class="state p-primary">
-                                  <i class="icon mdi mdi-check"></i>
-                                  <label></label>
-                              </div>
-                              
-                          </div>
-                          <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
-                      </td>
-                      <td>
-                          Nom Prenom 3
-                        </td>
-                        <td>
-                           C#
-                        </td>                    
-                    </tr>
-                      
-              </tbody>
-            </table>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Image
+                </th>
+                <th>
+                  Nom et prenom
+                </th>
+                <th>
+                  Competences
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-1">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="icon_solid" />
+                    <div class="state p-primary">
+                      <i class="icon mdi mdi-check"></i>
+                      <label></label>
+                    </div>
+
+                  </div>
+                  <img src="assets/images/faces-clipart/pic-3.png" alt="image" />
+                </td>
+                <td>
+                  Nom Prenom 1
+                </td>
+                <td>
+                  PHP, JAVA, .NET
+                </td>
+              </tr>
+              <tr>
+                <td class="py-1">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="icon_solid" />
+                    <div class="state p-primary">
+                      <i class="icon mdi mdi-check"></i>
+                      <label></label>
+                    </div>
+
+                  </div>
+                  <img src="assets/images/faces-clipart/pic-4.png" alt="image" />
+                </td>
+                <td>
+                  Nom Prenom 2
+                </td>
+                <td>
+                  ANGULAR, REACT
+                </td>
+              </tr>
+              <tr>
+                <td class="py-1">
+                  <div class="pretty p-icon p-round">
+                    <input type="radio" name="icon_solid" />
+                    <div class="state p-primary">
+                      <i class="icon mdi mdi-check"></i>
+                      <label></label>
+                    </div>
+
+                  </div>
+                  <img src="assets/images/faces-clipart/pic-2.png" alt="image" />
+                </td>
+                <td>
+                  Nom Prenom 3
+                </td>
+                <td>
+                  C#
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
 
 
 
 
-          </div>
+        </div>
       </div>
     </form>
   </div>
@@ -539,66 +561,68 @@
 </ng-template>
 
 <ng-template #archiver let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Archiver le condidat</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          
-          <h4 class="text-warning">Voulez-vous vraiment archiver ce condidat ?</h4>
-          
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
-      <button type="submit" [disabled]="loading" class="btn btn-outline-warning">Archiver</button>
-    </div>
-  </ng-template>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Archiver le condidat</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
 
-  <ng-template #supprimer let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Supprimer le condidat</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            
-            <h4 class="text-warning">Voulez-vous vraiment supprimer ce condidat ?</h4>
-            
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
-        <button type="submit" [disabled]="loading" class="btn btn-outline-warning">Supprimer</button>
-      </div>
-    </ng-template>
+        <h4 class="text-warning">Voulez-vous vraiment archiver ce condidat ?</h4>
 
-    <ng-template #remarque let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Remarque sur le condidat</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley not only five centuries,</p>
-              
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>          
-        </div>
-      </ng-template>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+    <button type="submit" [disabled]="loading" class="btn btn-outline-warning">Archiver</button>
+  </div>
+</ng-template>
+
+<ng-template #supprimer let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supprimer le condidat</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <h4 class="text-warning">Voulez-vous vraiment supprimer ce condidat ?</h4>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+    <button type="submit" [disabled]="loading" class="btn btn-outline-warning">Supprimer</button>
+  </div>
+</ng-template>
+
+<ng-template #remarque let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Remarque sur le condidat</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley not only five
+          centuries,</p>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+  </div>
+</ng-template>
