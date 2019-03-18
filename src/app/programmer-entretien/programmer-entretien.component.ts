@@ -10,11 +10,11 @@ import {Candidat} from '../candidat';
 export class ProgrammerEntretienComponent implements OnInit {
 		 closeResult: string;
 
-     candidats =[new Candidat(1,"yassine","valide"),
-     new Candidat(2,"hamid","en cours"),
-     new Candidat(3,"achraf","rejete"),
-     new Candidat(4,"achraf","en cours"),
-     new Candidat(5,"achraf","valide")
+     candidats =[new Candidat(1,"yassine","valide",1,"JAVA, ANGULAR"),
+     new Candidat(2,"hamid","en cours",1,"JAVA, ANGULAR"),
+     new Candidat(3,"achraf","rejete",1,"JAVA, ANGULAR"),
+     new Candidat(4,"achraf","en cours",1,"JAVA, ANGULAR"),
+     new Candidat(5,"achraf","valide",1,"JAVA, ANGULAR"),
       ];
 
   constructor(private modalService: NgbModal) { }
