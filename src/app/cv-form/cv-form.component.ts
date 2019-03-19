@@ -1,17 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-cv-form',
   templateUrl: './cv-form.component.html',
   styleUrls: ['./cv-form.component.scss']
 })
 export class CvFormComponent implements OnInit {
+
   Chovereds: any[];
   Lhovereds: any[];
   Cselected: any[];
   Lselected: any[];
   LangueRate: any;
   CompetanceRate: any;
+  ///Tempo
+  competences = [
+    {id: 1, name: 'JAVA'},
+    {id: 2, name: '.NET' },
+    {id: 3, name: 'ANGULAR' },
+    {id: 4, name: 'PHP' },
+    {id: 5, name: 'KOTLIN' }
+  ];
+  langues: any[] = [
+    {id: 1, name: 'Francais'},
+    {id: 2, name: 'Arabe' },
+    {id: 3, name: 'Anglais' },
+    {id: 4, name: 'Espaniol' },
+    {id: 5, name: 'Allemand' }
+  ];
   constructor(private fb: FormBuilder) { }
   /* from Declaration */
   public Cvform: FormGroup;
@@ -53,9 +70,6 @@ export class CvFormComponent implements OnInit {
   }
   addLoisir() {
     this.LoisirList.push(this.createLoisirs());
-
-    console.log(this.LoisirList);
-    console.log(this.Cvform);
   }
   removeLoisir(index: number) {
     this.LoisirList.removeAt(index);
@@ -80,10 +94,6 @@ addLangue() {
   this.LanguesList.push(this.createLangues());
   this.Lhovereds.push(0);
   this.Lselected.push(0);
-  console.log(this.Lhovereds);
-  console.log(this.Lselected);
-  console.log(this.LanguesList);
-  console.log(this.Cvform);
 }
 removeLangue(index: number) {
   this.LanguesList.removeAt(index);
@@ -112,23 +122,27 @@ addCompetance() {
   this.CompetanceList.push(this.createCompetances());
   this.Chovereds.push(0);
   this.Cselected.push(0);
-  console.log(this.CompetanceList);
-  console.log(this.Cvform);
 }
 removeCompetance(index: number) {
   this.CompetanceList.removeAt(index);
 }
-
 get competanceFormGroup() {
   return this.Cvform.get('competances') as FormArray;
 }
-getConsole(s:any){
+//console pr vue
+getConsole(s: any) {
   return console.log(s);
 }
 getCompetancesFormGroup(index: number): FormGroup {
   this.CompetanceList = this.Cvform.get('competances') as FormArray;
   const formGroup = this.CompetanceList.controls[index] as FormGroup;
   return formGroup;
+}
+//List Langue nd Competance
+
+//Form Submit
+onSubmit() {
+  console.log(this.Cvform.value);
 }
   ngOnInit() {
     this.Cvform = this.fb.group({
@@ -148,12 +162,6 @@ getCompetancesFormGroup(index: number): FormGroup {
     this.LoisirList = this.Cvform.get('loisirs') as FormArray;
     this.LanguesList = this.Cvform.get('langues') as FormArray;
     this.CompetanceList = this.Cvform.get('competances') as FormArray;
-    console.log(this.FormationList);
-    console.log(this.LoisirList);
-    console.log(this.LanguesList);
-    console.log(this.CompetanceList);
-    console.log(this.Cvform);
-    this.removeFormation(0);
     this.LangueRate = 5;
     this.CompetanceRate = 5;
     this.Chovereds = [0];

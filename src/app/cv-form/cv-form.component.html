@@ -1,5 +1,6 @@
-<div class="form-sample" [formGroup]="Cvform">
+<form class="form-sample" [formGroup]="Cvform" (ngSubmit)="onSubmit()">
     <div class="col-md-12 grid-margin stretch-card">
+
               <div class="card">
                 <div class="card-body">
                   <ngb-tabset class="tab-solid tab-solid-primary">
@@ -11,7 +12,7 @@
                           <div class="row">
                               <div class="form-group col-md-6">
                                 <div class="input-group">
-                                  <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                  <span class="input-group-addon bg-primary" id="colored-addon1">
                                     <i class="fa fa fa-user-o text-white"></i>
                                   </span>
                                   <input type="text" class="form-control"formControlName="Nom" placeholder="Nom" aria-label="Nom" aria-describedby="colored-addon1">
@@ -19,7 +20,7 @@
                               </div>
                                   <div class="form-group col-md-6">
                                     <div class="input-group">
-                                      <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                      <span class="input-group-addon bg-primary" id="colored-addon1">
                                         <i class="fa fa fa-user-o text-white"></i>
                                       </span>
                                       <input type="text" class="form-control"formControlName="Prenom" placeholder="Prenom" aria-label="Adresse" aria-describedby="colored-addon1">
@@ -29,7 +30,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                   <div class="input-group">
-                                    <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                    <span class="input-group-addon bg-primary" id="colored-addon1">
                                       <i class="fa fa-address-card-o text-white"></i>
                                     </span>
                                     <input type="text" class="form-control"formControlName="Cin" placeholder="Cin" aria-label="Cin" aria-describedby="colored-addon1">
@@ -37,7 +38,7 @@
                                 </div>
                                     <div class="form-group col-md-6">
                                       <div class="input-group">
-                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                          <span class="input-group-addon bg-primary" id="colored-addon1">
                                               <i class="fa fa-calendar text-white"></i>
                                             </span>
                                         <input id="DateDeNaissance" formControlName="DateNaissance" class="form-control" placeholder="yyyy-mm-dd" name="dp" min ngbDatepicker #dp="ngbDatepicker">
@@ -50,7 +51,7 @@
                         <div class="row">
                           <div class="form-group col-md-12">
                             <div class="input-group">
-                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                              <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-email-outline text-white"></i>
                               </span>
                               <input type="text" class="form-control" formControlName="Email" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1">
@@ -60,7 +61,7 @@
                         <div class="row">
                           <div class="form-group col-md-12">
                             <div class="input-group">
-                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                              <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-phone text-white"></i>
                               </span>
                               <input type="text" class="form-control" formControlName="Telephone" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1">
@@ -70,7 +71,7 @@
                         <div class="row">
                           <div class="form-group col-md-12">
                             <div class="input-group">
-                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                              <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-map-marker-outline text-white"></i>
                               </span>
                               <input type="text" class="form-control"formControlName="Adresse" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1">
@@ -99,7 +100,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <div class="input-group">
-                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                          <span class="input-group-addon bg-primary" id="colored-addon1">
                                             <i class="fa fa-university text-white"></i>
                                           </span>
                                           <input type="text" class="form-control" placeholder="NomEtablissement" aria-label="NomEtablissement" formControlName="NomEtablissement" aria-describedby="colored-addon1">
@@ -109,7 +110,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <div class="input-group">
-                                            <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                            <span class="input-group-addon bg-primary" id="colored-addon1">
                                                 <i class="fa fa-calendar text-white"></i>
                                               </span>
                                           <input id="DateDebut" formControlName="DateDebut" class="form-control" placeholder="Date du debut" name="dd" min ngbDatepicker #dd="ngbDatepicker">
@@ -120,7 +121,7 @@
                                       </div>
                                       <div class="form-group col-md-6">
                                           <div class="input-group">
-                                              <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                              <span class="input-group-addon bg-primary" id="colored-addon1">
                                                   <i class="fa fa-calendar text-white"></i>
                                                 </span>
                                             <input id="DateFin" formControlName="DateFin" class="form-control" placeholder="Date de fin" name="df" min ngbDatepicker #df="ngbDatepicker">
@@ -133,7 +134,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <div class="input-group">
-                                          <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                                          <span class="input-group-addon bg-primary" id="colored-addon1">
                                             <i class="fa fa-align-left text-white"></i>
                                           </span>
                                           <textarea class="form-control" id="exampleTextarea1" rows="5" placeholder="Description" formControlName="Description"></textarea>
@@ -166,21 +167,24 @@
                                 <div class="row">
                                 <div class="col-md-3">
                                 <p class="card-description">
-                                 Competance {{i}}
+                                 Competance {{i+1}}
                                 </p>
                                 </div>
                                 <div class="col-md-8"></div>
                                 <div class="col-md-1"><button  type="button" (click)="removeCompetance(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
                               </div>
                                 <div class="row">
-                                <div class="col-md-6">
-                                  <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Competance</label>
-                                    <div class="col-sm-8">
-                                      <input type="text" class="form-control" formControlName="Competance" />
-                                    </div>
-                                  </div>
-                                </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                          <span class="input-group-addon bg-primary " id="colored-addon1">
+                                            <i class="fa fa-puzzle-piece text-white"></i>
+                                          </span>
+                                          <select class="form-control placeholder" placeholder="Competance" aria-label="Competance" formControlName="Competance" >
+                                            <option value="" disabled selected hidden>Competance</option>
+                                          <option *ngFor="let competance1 of competences"  [value]="competance1.name">{{competance1.name}}</option>
+                                         </select>
+                                        </div>
+                                      </div>
 
 
                                   <div class="col-md-6">
@@ -190,11 +194,7 @@
                                         <ngb-rating class="rating" formControlName="Niveau" [(rate)]="Cselected[i]" (hover)="Chovereds[i]=$event" (leave)="Chovereds[i]=0" max="5" [readonly]="false"></ngb-rating>
                                       </div>
                                     </div>
-                                    <pre>
-                                      Selected: <b>{{Cselected[i]}}</b>
-                                      Hovered: <b>{{Chovereds[i]}}</b>
-                                      Hovered: <b><button (click)="getConsole(competance)"></button></b>
-                                      </pre>
+
                                   </div>
                                 </div>
                               </form>
@@ -202,7 +202,7 @@
 
                               <button type="button" class="btn btn-success" (click)="addCompetance()">
                                   <i class="mdi mdi-plus-circle-outline"></i>Ajouter Competances</button>
-                                </ng-template>
+                      </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                         <ng-template ngbTabTitle>
@@ -223,16 +223,18 @@
                                   <div class="col-md-1"> <button  type="button" (click)="removeLangue(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                      <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Langue</label>
+                                    <div class="form-group col-md-6">
+                                        <div class="input-group">
+                                          <span class="input-group-addon bg-primary" id="colored-addon1">
+                                            <i class="fa fa-language text-white"></i>
+                                          </span>
+                                          <select class="form-control placeholder" placeholder="Langue" aria-label="Langue" formControlName="Langue" >
+                                              <option value="" disabled selected hidden>Langue</option>
+                                            <option *ngFor="let langue1 of langues"  [value]="langue1.name">{{langue1.name}}</option>
 
-                                        <div class="col-sm-8">
-                                          <input type="text" formControlName="Langue" class="form-control" formControlName="Langue"/>
-
+                                          </select>
                                         </div>
                                       </div>
-                                    </div>
 
 
                                       <div class="col-md-6">
@@ -243,11 +245,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <pre>
-                                          Selected: <b>{{Lselected[i]}}</b>
-                                          Hovered: <b>{{Lhovereds[i]}}</b>
-                                          Hovered: <b><button (click)="getConsole(langue)"></button></b>
-                                          </pre>
+<
                                     </div>
                                   </div>
                                 </div>
@@ -274,14 +272,14 @@
                                     <div class="col-md-1"> <button  type="button" (click)="removeLoisir(i)"class="btn btn-danger btn-sm  btn-rounded"><i class="mdi mdi-close close1"></i></button></div>
                                   </div>
                                     <div class="row">
-                                    <div class="col-md-12">
-                                      <div class="form-group row">
-                                        <label class="col-sm-1 col-form-label">Loisir</label>
-                                        <div class="col-sm-11">
-                                          <input type="text" class="form-control" formControlName="Loisir" />
-                                        </div>
-                                      </div>
-                                    </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="input-group">
+                                              <span class="input-group-addon bg-primary" id="colored-addon1">
+                                                <i class="fa fa-gamepad text-white"></i>
+                                              </span>
+                                              <input type="text" class="form-control" placeholder="Loisir" aria-label="Loisir" formControlName="Loisir" aria-describedby="colored-addon1">
+                                            </div>
+                                          </div>
                                   </div>
 
                                   </form>
@@ -290,9 +288,16 @@
                                   <button type="button" class="btn btn-success" (click)="addLoisir()">
                                       <i class="mdi mdi-plus-circle-outline"></i>Ajouter Loisir</button>
                           </ng-template>
+
+                          <button type="submit" class="btn btn-success" >
+                            <i class="mdi mdi-plus-circle-outline"></i>Ajouter Competances</button>
+
+
                         </ngb-tab>
                   </ngb-tabset>
                 </div>
               </div>
             </div>
-    </div>
+            <button type="submit" class="btn btn-success" >
+              <i class="fa fa-file-pdf-o"></i>Sauvegarder les donnees</button>
+          </form>
