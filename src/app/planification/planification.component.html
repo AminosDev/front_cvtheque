@@ -10,7 +10,7 @@
           placeholder="Toutes les competences" [(ngModel)]="selectedCityIds">
         </ng-select>
       </div>
-
+      
     </div>
   </div>
 
@@ -27,9 +27,9 @@
             <ng-template ngbTabContent>
 
               <div class="table-responsive">
-                
+
                 <input class="form-control" type="text" placeholder="Rechercher" name="search" [(ngModel)]="filter">
-                
+
                 <table class="table table-hover">
                   <thead>
                     <tr>
@@ -49,6 +49,11 @@
                       </th>
                       <th>
                         Operations
+                      </th>
+                      <th>
+                          
+                        RT <i class="fa fa-angle-double-right icon-sm text-primary"></i>  Manager <i class="fa fa-angle-double-right icon-sm text-primary"></i>  RG
+    
                       </th>
                     </tr>
                   </thead>
@@ -71,9 +76,9 @@
                                 class="fa fa-file-pdf-o"></i></button></a>
                         </div>
                       </td>
-                      <td>
+                      <td>                        
                         <div aria-label="Basic example" class="btn-group" role="group">
-                          <button class="btn btn-primary icon-btn" type="button" (click)="open(planifier)"
+                          <button class="btn btn-primary icon-btn" ngbtooltip="Basic tooltip" placement="bottom" ngbTooltip="Basic tooltip" type="button" (click)="open(planifier)"
                             title="Planifier entretien avec RT"><i class="fa fa-calendar"></i></button>
                           <button class="btn btn-danger icon-btn" type="button" (click)="open(supprimer)"><i
                               class="fa fa-trash"></i></button>
@@ -81,6 +86,30 @@
                               class="mdi mdi-border-color"></i></button>
                         </div>
                       </td>
+
+                      <td>
+                            <div class="progress progress-md" style="width: 35px;margin-top: 12px;margin-bottom: -24px;margin-left: 32px;">
+                              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar bg-success"
+                                role="progressbar" style="width: 100%">
+                              </div>
+                            </div>
+                            
+                            <div class="progress progress-md" style="width: 35px;margin-top: 16px;margin-bottom: -24px;margin-left: 96px;">
+                                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar bg-secondary"
+                                  role="progressbar" style="width: 100%">
+                                </div>
+                            </div>
+                           
+                            <i class="fa fa-check-circle icon-lg text-success" placement="bottom" ngbTooltip="Basic tooltip" style="margin-right: 30px;"></i>
+    
+                            <i class="fa fa-clock-o icon-lg text-primary" placement="bottom" popoverTitle="Popover title" 
+                            ngbPopover="Sed posuere consectetur est at lobortis. Aenean eu leo quam." style="margin-right: 30px;"></i>
+    
+                            <i class="fa fa-info-circle icon-lg text-secondary" placement="bottom" popoverTitle="Popover title" 
+                            ngbPopover="Sed posuere consectetur est at lobortis. Aenean eu leo quam." style="margin-right: 30px;"></i>    
+                      
+                           
+                          </td>
                     </tr>
                   </tbody>
                   <pagination-controls (pageChange)="p = $event"></pagination-controls>
