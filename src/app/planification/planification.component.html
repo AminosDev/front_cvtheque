@@ -27,22 +27,22 @@
             <ng-template ngbTabContent>
 
               <div class="table-responsive">
-                <nav class="navbar">
-                  <input class="form-control" type="text" placeholder="Rechercher" name="search" [(ngModel)]="filter">
-                </nav>
-                <table class="table table-striped">
+                
+                <input class="form-control" type="text" placeholder="Rechercher" name="search" [(ngModel)]="filter">
+                
+                <table class="table table-hover">
                   <thead>
                     <tr>
                       <th>
                         Image
                       </th>
                       <th (click)="sort('name')">Nom et prenom
-                        <span class="glyphicon sort-icon" *ngIf="key =='name'"
-                          [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        <span class="fa " *ngIf="key =='name'"
+                          [ngClass]="{'fa-sort-asc':reverse,'fa-sort-desc':!reverse}"></span>
                       </th>
-                      <th (click)="sort('competence')">Competence
-                        <span class="glyphicon sort-icon" *ngIf="key =='name'"
-                          [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                      <th (click)="sort_competence('competence')">Competences
+                        <span class="fa " *ngIf="key_competence =='competence'"
+                          [ngClass]="{'fa-sort-asc':reverse_competence,'fa-sort-desc':!reverse_competence}"></span>
                       </th>
                       <th>
                         CV
@@ -53,7 +53,7 @@
                     </tr>
                   </thead>
                   <tbody
-                    *ngFor="let cand of candidats | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                    *ngFor="let cand of candidats | orderBy: key : reverse | orderBy: key_competence : reverse_competence | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                     <tr *ngIf="cand.statut===1">
                       <td class="py-1">
                         <img src="assets/images/faces-clipart/pic-1.png" alt="image" />

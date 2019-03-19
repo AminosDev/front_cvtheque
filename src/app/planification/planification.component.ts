@@ -25,7 +25,7 @@ export class PlanificationComponent implements OnInit {
   ];
 
   
-  candidats =[new Candidat(1,"yassine","valide",1,"JAVA, ANGULAR"),
+  candidats =[new Candidat(1,"yassine","valide",1,"ANGULAR"),
     new Candidat(2,"hamid","en cours",2,".NET"),
     new Candidat(3,"achraf","rejete",3,"PHP"),
     new Candidat(4,"achraf","en cours",2,"C#"),
@@ -39,6 +39,14 @@ export class PlanificationComponent implements OnInit {
     this.key = key;
     this.reverse = !this.reverse;
   }
+
+  key_competence: string = 'competence';
+  reverse_competence: boolean = false;
+  sort_competence(key_competence){
+    this.key_competence = key_competence;
+    this.reverse_competence = !this.reverse_competence;
+  }
+
   p: number = 1;
 
   constructor(private modalService: NgbModal,private formBuilder: FormBuilder) {}
