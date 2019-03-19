@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   public samplePagesCollapsed = true;
-  constructor() { }
 
-  ngOnInit() {
-  }
+ngOnInit() {
+      
+    }
 
+
+    
   
 
 }

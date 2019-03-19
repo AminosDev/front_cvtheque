@@ -49,12 +49,14 @@
                  {{cand.role}}
                 </td>
                 <td>
-                  <p *ngIf="cand.role==='en cours'">
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Programmer entretien</button>
-                 <p *ngIf="cand.role==='valide'">
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Valider</button>
-                 <p *ngIf="cand.role==='rejete'">
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">rejeter</button>
+                  
+
+                   <button class="btn btn-primary icon-btn" ngbtooltip="Basic tooltip" placement="bottom" ngbTooltip="Basic tooltip" type="button" (click)="open(content)"
+                            title="Planifier entretien avec RT"><i class="fa fa-calendar"></i></button>
+
+
+                 
+                 
 
                 </td>
               </tr>
