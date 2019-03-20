@@ -3,6 +3,7 @@ import { ViewEncapsulation } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
   // Bar
   public barChartOptions: ChartOptions = {
     responsive: true,
-    
+
     scales: { xAxes: [{}], yAxes: [{}] },
   };
   public barChartLabels: Label[] = ['2015', '2016', '2017', '2018', '2019'];
