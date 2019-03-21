@@ -115,10 +115,10 @@
                  {{cand.role}}
                 </td>
                 <td>
-                  <p *ngIf="cand.role==='en cours'">
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">Valider</button>
-               
-                 <button type="button" (click)="open(content)" class="btn btn-outline-primary">rejeter</button>
+                  
+                 <button type="button" (click)="open(content)" class="btn btn-inverse-danger btn-fw" ><i class="fa fa-times-circle"></i></button>&nbsp;
+<button type="button" (click)="open(content)" class="btn btn-inverse-primary btn-fw"><i class="fa fa-check-square"></i></button>
+
 
                 </td>
               </tr>
