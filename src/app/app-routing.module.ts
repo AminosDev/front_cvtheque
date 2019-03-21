@@ -24,8 +24,12 @@ import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.
 import { ConfigApplicationComponent  } from './config-application/config-application.component';
 
 
+
+
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+   
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'buttons', component: ButtonsComponent },
