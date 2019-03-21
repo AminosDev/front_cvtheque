@@ -109,7 +109,7 @@ get LangueFormGroup() {
 }
 
 getLanguesFormGroup(index: number): FormGroup {
-  this.LanguesList = this.Cvform.get('Langues') as FormArray;
+  this.LanguesList = this.Cvform.get('langues') as FormArray;
   const formGroup = this.LanguesList.controls[index] as FormGroup;
   return formGroup;
 }
@@ -223,7 +223,7 @@ getLoisirErrors(){
 getLangueErrors(){
   let n=0;
   for(let i = 0 ; i <  this.LanguesList.length; i++ ) {
-  if(!!this.LanguesList.controls[i].controls.Langue.errors){n++};
+  if(!!this.getLanguesFormGroup(i).controls.Langue.errors){n++};
 
   }
   return n;
