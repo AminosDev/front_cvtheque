@@ -1,5 +1,5 @@
-<form class="form-sample" [formGroup]="Cvform" (ngSubmit)="onSubmit()">
-    <div class="col-md-12 grid-margin stretch-card">
+<form  [formGroup]="Cvform" (ngSubmit)="onSubmit()">
+    <div class=" grid-margin stretch-card">
 
               <div class="card">
                 <div class="card-body">
@@ -7,6 +7,7 @@
                     <ngb-tab>
                       <ng-template ngbTabTitle>
                         <i class="fa fa-user"></i>Inforamtions Personnels
+                        <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getInfoErrors()!=0">   {{getInfoErrors()}}</div>
                       </ng-template>
                       <ng-template ngbTabContent>
                           <div class="row">
@@ -15,7 +16,10 @@
                                   <span class="input-group-addon bg-primary" id="colored-addon1">
                                     <i class="fa fa fa-user-o text-white"></i>
                                   </span>
-                                  <input type="text" class="form-control"formControlName="Nom" placeholder="Nom" aria-label="Nom" aria-describedby="colored-addon1">
+                                  <input type="text" class="form-control"formControlName="Nom" placeholder="Nom" aria-label="Nom" aria-describedby="colored-addon1" [ngClass]="{ 'is-invalid': submitted && f.Nom.errors }"/>
+                                  <div *ngIf="submitted && !!f.Nom.errors" class="invalid-feedback">
+                                    <div *ngIf="!!f.Nom.errors.required">Le nom est requis</div>
+                                </div>
                                 </div>
                               </div>
                                   <div class="form-group col-md-6">
@@ -23,17 +27,23 @@
                                       <span class="input-group-addon bg-primary" id="colored-addon1">
                                         <i class="fa fa fa-user-o text-white"></i>
                                       </span>
-                                      <input type="text" class="form-control"formControlName="Prenom" placeholder="Prenom" aria-label="Adresse" aria-describedby="colored-addon1">
+                                      <input type="text" class="form-control"formControlName="Prenom" placeholder="Prenom" aria-label="Adresse" aria-describedby="colored-addon1"[ngClass]="{ 'is-invalid': submitted && f.Prenom.errors }"/>
+                                      <div *ngIf="submitted && !!f.Prenom.errors" class="invalid-feedback">
+                                        <div *ngIf="!!f.Prenom.errors.required">Le prenom est requis</div>
                                     </div>
                                   </div>
                             </div>
+                          </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                   <div class="input-group">
                                     <span class="input-group-addon bg-primary" id="colored-addon1">
                                       <i class="fa fa-address-card-o text-white"></i>
                                     </span>
-                                    <input type="text" class="form-control"formControlName="Cin" placeholder="Cin" aria-label="Cin" aria-describedby="colored-addon1">
+                                    <input type="text" class="form-control"formControlName="Cin" placeholder="Cin" aria-label="Cin" aria-describedby="colored-addon1" [ngClass]="{ 'is-invalid': submitted && f.Cin.errors }"/>
+                                    <div *ngIf="submitted && !!f.Cin.errors" class="invalid-feedback">
+                                      <div *ngIf="!!f.Cin.errors.required">Le n° Cin est requis</div>
+                                  </div>
                                   </div>
                                 </div>
                                     <div class="form-group col-md-6">
@@ -41,20 +51,29 @@
                                           <span class="input-group-addon bg-primary" id="colored-addon1">
                                               <i class="fa fa-calendar text-white"></i>
                                             </span>
-                                        <input id="DateDeNaissance" formControlName="DateNaissance" class="form-control" placeholder="yyyy-mm-dd" name="dp" min ngbDatepicker #dp="ngbDatepicker">
+                                        <input id="DateDeNaissance" formControlName="DateNaissance" class="form-control" placeholder="yyyy-mm-dd" name="dp" min ngbDatepicker #dp="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && f.DateNaissance.errors }"/>
                                         <div class="input-group-append">
-                                            <button class="but-cal btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
+                                            <button class="but-cal btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button" ><i class="fa fa-sort-desc "></i></button>
+
+                                          </div>
+                                          <div *ngIf="submitted && !!f.DateNaissance.errors" class="invalid-feedback">
+                                            <div *ngIf="!!f.DateNaissance.errors.required">La date de naissance est requis</div>
                                         </div>
                                       </div>
                                     </div>
                               </div>
+
                         <div class="row">
                           <div class="form-group col-md-12">
                             <div class="input-group">
                               <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-email-outline text-white"></i>
                               </span>
-                              <input type="text" class="form-control" formControlName="Email" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1">
+                              <input type="text" class="form-control" formControlName="Email" placeholder="E_mail" aria-label="E_mail" aria-describedby="colored-addon1"  [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
+                              <div *ngIf="submitted && !!f.Email.errors" class="invalid-feedback">
+                                  <div *ngIf="!!f.Email.errors.required">L'email est requis</div>
+                                  <div *ngIf="!!f.Email.errors.email">L'address email doit etre valide</div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -64,7 +83,11 @@
                               <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-phone text-white"></i>
                               </span>
-                              <input type="text" class="form-control" formControlName="Telephone" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1">
+                              <input type="text" class="form-control" formControlName="Telephone" placeholder="Telephone" aria-label="Telephone" aria-describedby="colored-addon1" [ngClass]="{ 'is-invalid': submitted && f.Telephone.errors }" />
+                              <div *ngIf="submitted && !!f.Telephone.errors" class="invalid-feedback">
+                                  <div *ngIf="!!f.Telephone.errors.required">Le telephone est requis</div>
+
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -74,15 +97,20 @@
                               <span class="input-group-addon bg-primary" id="colored-addon1">
                                 <i class="mdi mdi-map-marker-outline text-white"></i>
                               </span>
-                              <input type="text" class="form-control"formControlName="Adresse" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1">
+                              <input type="text" class="form-control"formControlName="Adresse" placeholder="Adresse" aria-label="Adresse" aria-describedby="colored-addon1"[ngClass]="{ 'is-invalid': submitted && f.Adresse.errors }" />
+                              <div *ngIf="submitted && !!f.Adresse.errors" class="invalid-feedback">
+                                  <div *ngIf="!!f.Adresse.errors.required">L'adresse est requis</div>
+
+                              </div>
+                            </div>
                             </div>
                           </div>
-                        </div>
                 </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
-                        <i class="fa fa-graduation-cap"></i>Formations
+                        <div><i class="fa fa-graduation-cap"></i>Formations</div>
+                        <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getFormationErrors()!=0">   {{getFormationErrors()}}</div>
                       </ng-template>
                       <ng-template ngbTabContent>
                           <div>
@@ -103,7 +131,11 @@
                                           <span class="input-group-addon bg-primary" id="colored-addon1">
                                             <i class="fa fa-university text-white"></i>
                                           </span>
-                                          <input type="text" class="form-control" placeholder="NomEtablissement" aria-label="NomEtablissement" formControlName="NomEtablissement" aria-describedby="colored-addon1">
+                                          <input type="text" class="form-control" placeholder="NomEtablissement" aria-label="NomEtablissement" formControlName="NomEtablissement" aria-describedby="colored-addon1" [ngClass]="{ 'is-invalid': submitted &&  getFormationsFormGroup(i).controls.NomEtablissement.errors }" />
+                                          <div *ngIf="submitted && !! getFormationsFormGroup(i).controls.NomEtablissement.errors" class="invalid-feedback">
+                                              <div *ngIf="!! getFormationsFormGroup(i).controls.NomEtablissement.errors.required">Le nom de l'etablissement est requis</div>
+
+                                          </div>
                                         </div>
                                       </div>
                                 </div>
@@ -113,10 +145,14 @@
                                             <span class="input-group-addon bg-primary" id="colored-addon1">
                                                 <i class="fa fa-calendar text-white"></i>
                                               </span>
-                                          <input id="DateDebut" formControlName="DateDebut" class="form-control" placeholder="Date du debut" name="dd" min ngbDatepicker #dd="ngbDatepicker">
+                                          <input id="DateDebut" formControlName="DateDebut" class="form-control" placeholder="Date du debut" name="dd" min ngbDatepicker #dd="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted &&  getFormationsFormGroup(i).controls.DateDebut.errors }">
                                           <div class="input-group-append">
                                               <button class="but-cal btn btn-outline-secondary calendar" (click)="dd.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
                                           </div>
+                                          <div *ngIf="submitted && !! getFormationsFormGroup(i).controls.DateDebut.errors" class="invalid-feedback">
+                                            <div *ngIf="!! getFormationsFormGroup(i).controls.DateDebut.errors.required">La date de debut est requise</div>
+
+                                        </div>
                                         </div>
                                       </div>
                                       <div class="form-group col-md-6">
@@ -124,10 +160,14 @@
                                               <span class="input-group-addon bg-primary" id="colored-addon1">
                                                   <i class="fa fa-calendar text-white"></i>
                                                 </span>
-                                            <input id="DateFin" formControlName="DateFin" class="form-control" placeholder="Date de fin" name="df" min ngbDatepicker #df="ngbDatepicker">
+                                            <input id="DateFin" formControlName="DateFin" class="form-control" placeholder="Date de fin" name="df" min ngbDatepicker #df="ngbDatepicker"  [ngClass]="{ 'is-invalid': submitted &&  getFormationsFormGroup(i).controls.DateFin.errors }">
                                             <div class="input-group-append">
                                                 <button class="but-cal btn btn-outline-secondary calendar" (click)="df.toggle()" type="button"><i class="fa fa-sort-desc "></i></button>
                                             </div>
+                                            <div *ngIf="submitted && !! getFormationsFormGroup(i).controls.DateFin.errors" class="invalid-feedback">
+                                              <div *ngIf="!! getFormationsFormGroup(i).controls.DateFin.errors.required">La date de fin est requise</div>
+
+                                          </div>
                                           </div>
                                         </div>
                                 </div>
@@ -137,8 +177,11 @@
                                           <span class="input-group-addon bg-primary" id="colored-addon1">
                                             <i class="fa fa-align-left text-white"></i>
                                           </span>
-                                          <textarea class="form-control" id="exampleTextarea1" rows="5" placeholder="Description" formControlName="Description"></textarea>
-                                        </div>
+                                          <textarea class="form-control" id="exampleTextarea1" rows="5" placeholder="Description" formControlName="Description" [ngClass]="{ 'is-invalid': submitted && getFormationsFormGroup(i).controls.Description.errors }" ></textarea>
+                                          <div *ngIf="submitted && !!getFormationsFormGroup(i).controls.Description.errors" class="invalid-feedback">
+                                              <div *ngIf="!!getFormationsFormGroup(i).controls.Description.errors.required">La description est requise</div>
+                                              </div>
+                                          </div>
                                       </div>
                                 </div>
                                 <div class="row">
@@ -154,11 +197,13 @@
                             </div>
                               <button type="button" class="btn btn-success" (click)="addFormation()">
                                   <i class="mdi mdi-plus-circle-outline"></i>Ajouter Formation</button>
+
                         </ng-template>
                     </ngb-tab>
                     <ngb-tab>
                       <ng-template ngbTabTitle>
                         <i class="fa fa-puzzle-piece"></i>Competances
+                        <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getCompetanceErrors()!=0">   {{getCompetanceErrors()}}</div>
                       </ng-template>
                       <ng-template ngbTabContent>
 
@@ -179,10 +224,13 @@
                                           <span class="input-group-addon bg-primary " id="colored-addon1">
                                             <i class="fa fa-puzzle-piece text-white"></i>
                                           </span>
-                                          <select class="form-control placeholder" placeholder="Competance" aria-label="Competance" formControlName="Competance" >
+                                          <select class="form-control placeholder" placeholder="Competance" aria-label="Competance" formControlName="Competance" [ngClass]="{ 'is-invalid': submitted && getCompetancesFormGroup(i).controls.Competance.errors }">
                                             <option value="" disabled selected hidden>Competance</option>
                                           <option *ngFor="let competance1 of competences"  [value]="competance1.name">{{competance1.name}}</option>
                                          </select>
+                                         <div *ngIf="submitted && !!getCompetancesFormGroup(i).controls.Competance.errors" class="invalid-feedback">
+                                          <div *ngIf="!!getCompetancesFormGroup(i).controls.Competance.errors.required">Le nom de la competance est requis</div>
+                                          </div>
                                         </div>
                                       </div>
 
@@ -191,7 +239,10 @@
                                     <div class="form-group row">
                                       <label class="col-sm-3 col-form-label">Niveau</label>
                                       <div class="col-sm-8">
-                                        <ngb-rating class="rating" formControlName="Niveau" [(rate)]="Cselected[i]" (hover)="Chovereds[i]=$event" (leave)="Chovereds[i]=0" max="5" [readonly]="false"></ngb-rating>
+                                        <ngb-rating class="rating" formControlName="Niveau" [(rate)]="Cselected[i]" (hover)="Chovereds[i]=$event" (leave)="Chovereds[i]=0" max="5" [readonly]="false" [ngClass]="{ 'is-invalid': submitted && getCompetancesFormGroup(i).controls.Niveau.errors }"></ngb-rating>
+                                        <div *ngIf="submitted && !!getCompetancesFormGroup(i).controls.Niveau.errors" class="invalid-feedback">
+                                          <div *ngIf="!!getCompetancesFormGroup(i).controls.Niveau.errors.min">Le nom de la competance est requis</div>
+                                          </div>
                                       </div>
                                     </div>
 
@@ -207,7 +258,9 @@
                     <ngb-tab>
                         <ng-template ngbTabTitle>
                           <i class="fa fa-language"></i>Langues
+                         <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getLangueErrors()!=0">   {{getLangueErrors()}}</div>
                         </ng-template>
+
                         <ng-template ngbTabContent>
 
                                 <div class="col-md-12" forArrayName="langues" *ngFor="let langue of LangueFormGroup.controls;let i=index;">
@@ -228,11 +281,14 @@
                                           <span class="input-group-addon bg-primary" id="colored-addon1">
                                             <i class="fa fa-language text-white"></i>
                                           </span>
-                                          <select class="form-control placeholder" placeholder="Langue" aria-label="Langue" formControlName="Langue" >
-                                              <option value="" disabled selected hidden>Langue</option>
-                                            <option *ngFor="let langue1 of langues"  [value]="langue1.name">{{langue1.name}}</option>
 
-                                          </select>
+                                          <select class="form-control placeholder"  aria-label="Langue" formControlName="Langue" [ngClass]="{ 'is-invalid': submitted && langue.controls.Langue.errors}">
+                                            <option value="" disabled selected hidden>Langue</option>
+                                          <option *ngFor="let langue1 of Langues"  [value]="langue1.name">{{langue1.name}}</option>
+                                         </select>
+                                         <div *ngIf="submitted && !!langue.controls.Langue.errors" class="invalid-feedback">
+                                          <div *ngIf="!!langue.controls.Langue.errors.required">La langue est requise</div>
+                                          </div>
                                         </div>
                                       </div>
 
@@ -245,11 +301,10 @@
                                           </div>
                                         </div>
                                       </div>
-<
+
                                     </div>
                                   </div>
                                 </div>
-
                                 <button type="button" class="btn btn-success" (click)="addLangue()">
                                     <i class="mdi mdi-plus-circle-outline"></i>Ajouter Langue</button>
                         </ng-template>
@@ -257,7 +312,9 @@
                       <ngb-tab>
                           <ng-template ngbTabTitle>
                             <i class="fa fa-gamepad"></i>Loisir
+                            <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getLoisirErrors()!=0">   {{getLoisirErrors()}}</div>
                           </ng-template>
+
                           <ng-template ngbTabContent>
                               <div >
                                   <div forArrayName="loisirs" class="col-md-12" *ngFor="let loisir of LoisirFormGroup.controls;let i=index;"><hr/>
@@ -277,7 +334,10 @@
                                               <span class="input-group-addon bg-primary" id="colored-addon1">
                                                 <i class="fa fa-gamepad text-white"></i>
                                               </span>
-                                              <input type="text" class="form-control" placeholder="Loisir" aria-label="Loisir" formControlName="Loisir" aria-describedby="colored-addon1">
+                                              <input type="text" class="form-control" placeholder="Loisir" aria-label="Loisir" formControlName="Loisir" aria-describedby="colored-addon1" [ngClass]="{ 'is-invalid': submitted && getLoisirsFormGroup(i).controls.Loisir.errors }">
+                                              <div *ngIf="submitted && !!getLoisirsFormGroup(i).controls.Loisir.errors" class="invalid-feedback">
+                                                <div *ngIf="!!getLoisirsFormGroup(i).controls.Loisir.errors.required">Le loisir est requis</div>
+                                                </div>
                                             </div>
                                           </div>
                                   </div>
@@ -287,6 +347,7 @@
                                 </div>
                                   <button type="button" class="btn btn-success" (click)="addLoisir()">
                                       <i class="mdi mdi-plus-circle-outline"></i>Ajouter Loisir</button>
+
                           </ng-template>
 
                           <button type="submit" class="btn btn-success" >
@@ -294,10 +355,122 @@
 
 
                         </ngb-tab>
+                        <ngb-tab>
+                          <ng-template ngbTabTitle>
+                            <i class="fa fa-file-pdf-o"></i>Pdf
+                            <div class="not badge badge-pill badge-danger" *ngIf="submitted&&getLienError()!=0">   {{getLienError()}}</div>
+                          </ng-template>
+                          <ng-template ngbTabContent>
+                              <div class="row">
+                                <div class="form-group col-md-12">
+                                  <div class="input-group">
+                                      <span class="input-group-addon bg-primary" id="colored-addon1">
+                                          <i class="fa fa-file-pdf-o text-white"></i>
+                                        </span>
+
+                                          <div class="custom-file">
+                                              <input type="file" class="custom-file-input" id="customFile" formControlName="Lien"  placeholder="Chosir fichier" formControlName="Lien" lang="fr" placeholder="Choose file"  [ngClass]="{ 'is-invalid': submitted && f.Lien.errors }"/>
+                                              <label class="custom-file-label" for="customFile" >{{f.Lien.value}}</label>
+                                            </div>
+
+
+                                  </div>
+                                  <div *ngIf="submitted && !!f.Lien.errors">
+                                    <div *ngIf="!!f.Lien.errors.required"  class="inval">Le pdf est requis</div>
+                                </div>
+                                </div>
+                              </div>
+                          </ng-template>
+                        </ngb-tab>
                   </ngb-tabset>
                 </div>
+                <button type="button" class="btn btn-success" type="button" (click)="open(archiver)">
+                    <i class="mdi mdi-plus-circle-outline"></i>Ajouter Cv</button>
               </div>
+
+              <ng-template #CvModal #archiver let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Confirmation Cv</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="A4 modal-body" style=" margin: 50px !important;
+                  background-color: white !important;
+                  box-shadow: 5px 10px 8px #888888 !important;
+                  padding: 30px !important;">
+                    <div class="">
+                   <div class="row">
+                    <div class="title col-md-12">InfoPersonnel </div>
+                   <hr/>
+                    <div class="titre2 col-md-6">Nom </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Nom.value}}</div>
+                    <div class="titre2 col-md-6">Prenom </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Prenom.value}}</div>
+                    <div class="titre2 col-md-6">Date de naissance </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.DateNaissance.value.year}}-{{f.DateNaissance.value.month}}-{{f.DateNaissance.value.day}}</div>
+                    <div class="titre2 col-md-6">Telephone </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Cin.value}}</div>
+                    <div class="titre2 col-md-6">Email </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Telephone.value}}</div>
+                    <div class="titre2 col-md-6">Addresse </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Adresse.value}}</div><hr/>
+                    <div class="title">Formation </div></div>
+                    <hr/>
+                    <div *ngFor="let formation of formationFormGroup.controls;let i=index;">
+                      <hr/>
+                      <div class="row">
+                      <div class="title col-md-12">Formation {{i+1}}</div>
+                     <div class="titre2 col-md-6">Nom Etablissement</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.NomEtablissement.value}}</div>
+                     <div class="titre2 col-md-6">Date de debut </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.DateDebut.value.year}}-{{formation.controls.DateDebut.value.month}}-{{formation.controls.DateDebut.value.day}}</div>
+                     <div class="titre2 col-md-6">Date de fin </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.DateFin.value.year}}-{{formation.controls.DateFin.value.month}}-{{formation.controls.DateFin.value.day}}</div>
+                     <div class="titre2 col-md-6">Description </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.Description.value}}</div>
+                    </div>
+
+                    </div>
+                    <hr/>
+                    <div class="title col-md-12">Competances </div><hr/>
+                    <div *ngFor="let competence of competanceFormGroup.controls;let i=index;">
+                        <hr/>
+                        <div class="row">
+                        <div class="title col-md-12">Competance {{i+1}}</div>
+                       <div class="titre2 col-md-6">{{competence.controls.Competance.value}}</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{competence.controls.Niveau.value}}</div>
+
+                      </div>
+
+                      </div>
+                      <hr/>
+                      <div class="title col-md-12">Langues </div><hr/>
+                      <div *ngFor="let langue of LangueFormGroup.controls;let i=index;">
+                          <hr/>
+                          <div class="row"><hr/>
+                          <div class="title col-md-12">Langue {{i+1}}</div>
+
+                         <div class="titre2 col-md-6">{{langue.controls.Langue.value}}</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{langue.controls.Niveau.value}}</div>
+
+                        </div>
+
+                        </div>
+                        <hr/>
+                        <div class="title col-md-12">Loisirs </div><hr/>
+                        <div class="row">
+                        <div *ngFor="let loisir of LoisirFormGroup.controls;let i=index;">
+
+
+
+                           <div class="answer col-md-3">{{loisir.controls.Loisir.value}}</div>-
+
+                          </div>
+                          </div>
+                          </div>
+                   </div>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Confirmation Cv</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+                  <button type="submit"  class="btn btn-outline-warning" (click)="onSubmit()">Sauvegarder</button>
+                </div>
+              </ng-template>
             </div>
-            <button type="submit" class="btn btn-success" >
-              <i class="fa fa-file-pdf-o"></i>Sauvegarder les donnees</button>
+
           </form>
