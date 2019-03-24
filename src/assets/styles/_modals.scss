@@ -16,10 +16,44 @@
       }
       .modal-body{
         padding: $modal-body-padding-y $modal-body-padding-x;
+
       }
+      .A4 {
+        padding-left: 100px  !important;
+        padding-right: 100px !important;
+        margin-left: 200px !important;
+        margin-right: 200px !important;
+        margin-top: 30px !important;
+
+        background-color: white !important;
+        box-shadow: 5px 10px 8px #888888 !important;
+        text-align: center;
+
+      }
+
+
       .modal-footer{
         padding: $modal-footer-padding-y $modal-footer-padding-x;
       }
     }
   }
+}
+
+.titre2{
+  font-size: 20px;
+  font-style: inherit;
+  margin-top: 5px;
+  margin-bottom: 5px
+}
+.titre{
+  font-size: 28px;
+  font-style: inherit;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.titre1{
+  font-size: 24px;
+  font-style: inherit;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

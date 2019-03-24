@@ -8,7 +8,7 @@
 .desc{
   margin-top: 33px !important;
 }
-select { color: gray !important; }
+
 option{color :black !important;}
 .inval{
   margin-top: 0.25rem;
@@ -29,15 +29,21 @@ option{color :black !important;}
 .titre2{
   font-size:7px;
 }
-.A4 {
-  margin-top: 50px !important;
-  margin-Bottom: 50px !important;
-  margin-right: 200px;
-  margin-left:200px;
+#A4 {
+  padding-left: 100px  !important;
+  padding-right: 100px !important;
+  margin-left: 200px !important;
+  margin-right: 200px !important;
+  margin-top: 30px !important;
+
   background-color: white !important;
   box-shadow: 5px 10px 8px #888888 !important;
-  padding: 30px !important;
+
 
 }
+.text {
+  text-align: center;
+}
+
 
 }

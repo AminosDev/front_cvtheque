@@ -224,7 +224,7 @@
                                           <span class="input-group-addon bg-primary " id="colored-addon1">
                                             <i class="fa fa-puzzle-piece text-white"></i>
                                           </span>
-                                          <select class="form-control placeholder" placeholder="Competance" aria-label="Competance" formControlName="Competance" [ngClass]="{ 'is-invalid': submitted && getCompetancesFormGroup(i).controls.Competance.errors }">
+                                          <select [ngStyle]="{'color': !!competance.controls.Competance.value? '#495057 ' : 'lightgray'}" class="form-control " class="form-control placeholder" placeholder="Competance" aria-label="Competance" formControlName="Competance" [ngClass]="{ 'is-invalid': submitted && getCompetancesFormGroup(i).controls.Competance.errors }">
                                             <option value="" disabled selected hidden>Competance</option>
                                           <option *ngFor="let competance1 of competences"  [value]="competance1.name">{{competance1.name}}</option>
                                          </select>
@@ -282,8 +282,8 @@
                                             <i class="fa fa-language text-white"></i>
                                           </span>
 
-                                          <select class="form-control placeholder"  aria-label="Langue" formControlName="Langue" [ngClass]="{ 'is-invalid': submitted && langue.controls.Langue.errors}">
-                                            <option value="" disabled selected hidden>Langue</option>
+                                          <select [ngStyle]="{'color': !!langue.controls.Langue.value? '#495057 ' : 'lightgray'}" class="form-control "  aria-label="Langue" formControlName="Langue" [ngClass]="{ 'is-invalid': submitted && langue.controls.Langue.errors}">
+                                            <option  value="" disabled selected hidden>Langue</option>
                                           <option *ngFor="let langue1 of Langues"  [value]="langue1.name">{{langue1.name}}</option>
                                          </select>
                                          <div *ngIf="submitted && !!langue.controls.Langue.errors" class="invalid-feedback">
@@ -370,7 +370,8 @@
 
                                           <div class="custom-file">
                                               <input type="file" class="custom-file-input" id="customFile" formControlName="Lien"  placeholder="Chosir fichier" formControlName="Lien" lang="fr" placeholder="Choose file"  [ngClass]="{ 'is-invalid': submitted && f.Lien.errors }"/>
-                                              <label class="custom-file-label" for="customFile" >{{f.Lien.value}}</label>
+                                              <label class="custom-file-label "[ngStyle]="{'color': !!f.Lien.value? '#495057 ' : 'lightgray'}" for="customFile" >{{!!f.Lien.value? f.Lien.value :'Selectionner un fichier'}}</label>
+
                                             </div>
 
 
@@ -398,44 +399,45 @@
                   <div class="A4 modal-body" >
                     <div class="">
                    <div class="row">
-                    <div class="title col-md-12">InfoPersonnel </div>
+                    <div class="titre col-md-12">InfoPersonnel </div>
                    <hr/>
-                    <div class="titre2 col-md-6">Nom </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Nom.value}}</div>
-                    <div class="titre2 col-md-6">Prenom </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Prenom.value}}</div>
-                    <div class="titre2 col-md-6">Date de naissance </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.DateNaissance.value.year}}-{{f.DateNaissance.value.month}}-{{f.DateNaissance.value.day}}</div>
-                    <div class="titre2 col-md-6">Telephone </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Cin.value}}</div>
-                    <div class="titre2 col-md-6">Email </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Telephone.value}}</div>
-                    <div class="titre2 col-md-6">Addresse </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{f.Adresse.value}}</div><hr/>
-                    <div class="title">Formation </div></div>
+                    <div class="titre2 col-md-5">Nom </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.Nom.value}}</div>
+                    <div class="titre2 col-md-5">Prenom </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.Prenom.value}}</div>
+                    <div class="titre2 col-md-5">Date de naissance </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.DateNaissance.value.year}}-{{f.DateNaissance.value.month}}-{{f.DateNaissance.value.day}}</div>
+                    <div class="titre2 col-md-5">Telephone </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.Cin.value}}</div>
+                    <div class="titre2 col-md-5">Email </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.Telephone.value}}</div>
+                    <div class="titre2 col-md-5">Addresse </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{f.Adresse.value}}</div>
+                    <hr/>
+                    <div class="titre col-md-12">Formation </div></div>
                     <hr/>
                     <div *ngFor="let formation of formationFormGroup.controls;let i=index;">
                       <hr/>
                       <div class="row">
-                      <div class="title col-md-12">Formation {{i+1}}</div>
-                     <div class="titre2 col-md-6">Nom Etablissement</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.NomEtablissement.value}}</div>
-                     <div class="titre2 col-md-6">Date de debut </div><div  class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.DateDebut.value.year}}-{{formation.controls.DateDebut.value.month}}-{{formation.controls.DateDebut.value.day}}</div>
-                     <div class="titre2 col-md-6">Date de fin </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.DateFin.value.year}}-{{formation.controls.DateFin.value.month}}-{{formation.controls.DateFin.value.day}}</div>
-                     <div class="titre2 col-md-6">Description </div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{formation.controls.Description.value}}</div>
+                      <div class="titre1 col-md-12">Formation {{i+1}}</div>
+                     <div class="titre2 col-md-5">Nom Etablissement</div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{formation.controls.NomEtablissement.value}}</div>
+                     <div class="titre2 col-md-5">Date de debut </div><div  class="answer col-md-2">:</div><div class="answer col-md-5">{{formation.controls.DateDebut.value.year}}-{{formation.controls.DateDebut.value.month}}-{{formation.controls.DateDebut.value.day}}</div>
+                     <div class="titre2 col-md-5">Date de fin </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{formation.controls.DateFin.value.year}}-{{formation.controls.DateFin.value.month}}-{{formation.controls.DateFin.value.day}}</div>
+                     <div class="titre2 col-md-5">Description </div><div class="answer col-md-2">:</div><div class="answer col-md-5">{{formation.controls.Description.value}}</div>
                     </div>
 
                     </div>
                     <hr/>
-                    <div class="title col-md-12">Competances </div><hr/>
+                    <div class="titre col-md-12">Competances </div><hr/>
                     <div *ngFor="let competence of competanceFormGroup.controls;let i=index;">
                         <hr/>
                         <div class="row">
-                        <div class="title col-md-12">Competance {{i+1}}</div>
+                        <div class="titre1 col-md-12">Competance {{i+1}}</div>
                        <div class="titre2 col-md-6">{{competence.controls.Competance.value}}</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{competence.controls.Niveau.value}}</div>
 
                       </div>
 
                       </div>
                       <hr/>
-                      <div class="title col-md-12">Langues </div><hr/>
+                      <div class="titre col-md-12">Langues </div><hr/>
                       <div *ngFor="let langue of LangueFormGroup.controls;let i=index;">
                           <hr/>
                           <div class="row"><hr/>
-                          <div class="title col-md-12">Langue {{i+1}}</div>
+                          <div class="titre1 col-md-12">Langue {{i+1}}</div>
 
                          <div class="titre2 col-md-6">{{langue.controls.Langue.value}}</div><div class="answer col-md-1">:</div><div class="answer col-md-5">{{langue.controls.Niveau.value}}</div>
 
@@ -443,7 +445,7 @@
 
                         </div>
                         <hr/>
-                        <div class="title col-md-12">Loisirs </div><hr/>
+                        <div class="titre col-md-12">Loisirs </div><hr/>
                         <div class="row">
                         <div *ngFor="let loisir of LoisirFormGroup.controls;let i=index;">
 

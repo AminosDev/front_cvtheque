@@ -240,7 +240,7 @@ onSubmit() {
       Prenom: ['', Validators.required],
       Cin: ['', Validators.required],
       DateNaissance: ['', Validators.required],
-      Email: ['', Validators.required, Validators.email],
+      Email: ['', Validators.compose([Validators.required, Validators.email])],
       Telephone: ['', Validators.required],
       Adresse: ['', Validators.required],
       formations: this.fb.array([this.createFormations()]),
