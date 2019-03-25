@@ -16,7 +16,7 @@ export class CandidatServiceService {
 
   private port:string='8080';
 
-  private baseUrl:string=this.ip_adress+this.port+'/rest';
+  private baseUrl:string=this.ip_adress+this.port+'/Candidat';
 
   private headers = new Headers({'Content-Type':'application/json'});
   
