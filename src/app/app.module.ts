@@ -40,6 +40,8 @@ import { ProgrammerEntretienComponent } from './programmer-entretien/programmer-
 import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
 import { ConfigApplicationComponent } from './config-application/config-application.component';
 
+import { HttpModule } from '@angular/http';
+
 
 
 
@@ -85,7 +87,8 @@ import { ConfigApplicationComponent } from './config-application/config-applicat
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   providers: [
   

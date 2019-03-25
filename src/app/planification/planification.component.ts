@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgSelectModule, NgOption} from '@ng-select/ng-select';
+import { Http,Response,Headers,RequestOptions} from '@angular/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Candidat } from '../candidat';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Component({
   selector: 'app-planification',
@@ -10,6 +15,12 @@ import { Candidat } from '../candidat';
   styleUrls: ['./planification.component.scss']
 })
 export class PlanificationComponent implements OnInit {
+
+  private baseUrl:string='http://localhost:8080/Candidat';
+
+  private headers = new Headers({'Content-Type':'application/json'});
+  
+  private option =  new RequestOptions({headers:this.headers});
 
   
   registerForm: FormGroup;
@@ -49,14 +60,27 @@ export class PlanificationComponent implements OnInit {
 
   p: number = 1;
 
-  constructor(private modalService: NgbModal,private formBuilder: FormBuilder) {}
+  constructor(private modalService: NgbModal,private formBuilder: FormBuilder,private _http:Http) {}
 
-  
+  getCandidat(){
+    return this._http.get(this.baseUrl+'/list',this.option).map((respense:Response)=>respense.json())
+    .catch(this.errorHanlder);
+  }
 
+  errorHanlder(error:Response){
+    return Observable.throw(error||"SERVER ERROR")
+  }
+
+  cands:Candidats;
+  currentRate: any;
   ngOnInit() {
-
+    this.currentRate = 4;
     
-
+    this.getCandidat().subscribe((cands)=>{
+      this.cands=cands;console.log(cands);
+    },(error)=>{
+      console.log(error);
+    })
     
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -103,4 +127,14 @@ export class PlanificationComponent implements OnInit {
   }
   
   
+}
+
+export class Candidats {
+  constructor(
+    public id: number,
+    public name: string,
+    public role:string,
+    public statut:number,
+    public competence:string
+    ) { }
 }
