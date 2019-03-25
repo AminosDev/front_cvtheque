@@ -58,18 +58,16 @@
                     </tr>
                   </thead>
                   <tbody
-                    *ngFor="let cand of cands | orderBy: key : reverse | orderBy: key_competence : reverse_competence | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-                    <tr *ngIf="cand.situation_famille===1">
+                    *ngFor="let cand of candidats | orderBy: key : reverse | orderBy: key_competence : reverse_competence | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                    <tr *ngIf="cand.statut===1">
                       <td class="py-1">
                         <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
                       </td>
                       <td>
-                        {{cand.prenom}}
+                        {{cand.name}}
                       </td>
                       <td>
-
-                          <h5 *ngFor="let comp of cand.ratings">{{comp.competence.competence}} <ngb-rating rate={{comp.rating}} [readonly]=true max=5 class="rating"></ngb-rating></h5>
-                        
+                        {{cand.competence}}
                       </td>
                       <td>
                         <div aria-label="Basic example" class="btn-group" role="group">
