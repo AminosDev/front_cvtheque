@@ -19,14 +19,14 @@ export class PlanificationComponent implements OnInit {
   private baseUrl:string='http://localhost:8080/Candidat';
 
   private headers = new Headers({'Content-Type':'application/json'});
-  
+
   private option =  new RequestOptions({headers:this.headers});
 
-  
+
   registerForm: FormGroup;
   submitted = false;
   closeResult: string;
-  
+
   competences = [
     {id: 1, name: 'JAVA'},
     {id: 2, name: '.NET'},
@@ -35,7 +35,7 @@ export class PlanificationComponent implements OnInit {
     {id: 5, name: 'KOTLIN'}
   ];
 
-  
+
   candidats =[new Candidat(1,"yassine","valide",1,"ANGULAR"),
     new Candidat(2,"hamid","en cours",2,".NET"),
     new Candidat(3,"achraf","rejete",3,"PHP"),
@@ -75,13 +75,13 @@ export class PlanificationComponent implements OnInit {
   currentRate: any;
   ngOnInit() {
     this.currentRate = 4;
-    
+
     this.getCandidat().subscribe((cands)=>{
       this.cands=cands;console.log(cands);
     },(error)=>{
       console.log(error);
     })
-    
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -103,10 +103,10 @@ export class PlanificationComponent implements OnInit {
     alert('SUCCESS!! :-)')
   }
 
-  
 
 
-  
+
+
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -125,8 +125,8 @@ export class PlanificationComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-  
-  
+
+
 }
 
 export class Candidats {
