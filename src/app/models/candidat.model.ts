@@ -4,6 +4,7 @@ import { CompetanceRating } from "./CompetenceRating";
 import { loisir } from "./loisir.model.";
 import { formation } from "./formation.model";
 import { cv } from "./cv.model";
+import { Entretien } from "./Entretien.model";
 
 export class candidat {
 	id_candidat : Number ;
