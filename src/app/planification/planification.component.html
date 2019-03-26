@@ -57,8 +57,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody
-                    *ngFor="let cand of cands | orderBy: key : reverse | orderBy: key_competence : reverse_competence | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                  <tbody *ngFor="let cand of cands | orderBy: key : reverse | orderBy: key_competence : reverse_competence | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                     <tr *ngIf="cand.situation_famille===1">
                       <td class="py-1">
                         <img src="assets/images/faces-clipart/pic-1.png" alt="image" />
